@@ -35,9 +35,11 @@ class RecipesProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _recipes = await _repository.getAllRecipes();
-      _favorites = await _repository.getFavorites();
-      _recent = await _repository.getRecent();
+      // Copy: the source list may be unmodifiable (const mock data),
+      // while toggleFavorite/markRecent replace items in place.
+      _recipes = List.of(await _repository.getAllRecipes());
+      _favorites = List.of(await _repository.getFavorites());
+      _recent = List.of(await _repository.getRecent());
     } catch (e) {
       _error = e.toString();
     } finally {
@@ -67,6 +69,19 @@ class RecipesProvider extends ChangeNotifier {
     final recipe = _recipes[index];
     _recipes[index] = recipe.copyWith(isFavorite: !recipe.isFavorite);
     _favorites = _recipes.where((r) => r.isFavorite).toList();
+    notifyListeners();
+  }
+
+  RecipeModel? recipeById(String id) =>
+      _recipes.where((r) => r.id == id).firstOrNull;
+
+  /// Marks a recipe as recently viewed (called when the detail opens).
+  void markRecent(String recipeId) {
+    final index = _recipes.indexWhere((r) => r.id == recipeId);
+    if (index == -1 || _recipes[index].isRecent) return;
+
+    _recipes[index] = _recipes[index].copyWith(isRecent: true);
+    _recent = _recipes.where((r) => r.isRecent).toList();
     notifyListeners();
   }
 }

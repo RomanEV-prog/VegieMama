@@ -1,65 +1,335 @@
 import '../../models/recipe_model.dart';
 
-/// Mock recipe data for development
+/// Mock recipe data for development — realistic plant-based recipes
+/// covering pregnancy, breastfeeding, food introduction and toddlers.
 class MockRecipeService {
   Future<List<RecipeModel>> getAllRecipes() async {
     await Future.delayed(const Duration(milliseconds: 400));
-    return [
-      const RecipeModel(
-        id: 'r1',
-        title: 'Zeleni smoothie z bananami',
-        tags: ['zajtrk', 'hitro', 'smoothie'],
-        isFavorite: true,
-        isRecent: true,
-        suitableFor: ['pregnancy', 'breastfeeding'],
-        nutrientsHighlights: ['železo', 'folna kislina'],
-        prepTimeMinutes: 5,
-      ),
-      const RecipeModel(
-        id: 'r2',
-        title: 'Lečin curry z riževimi rezanci',
-        tags: ['kosilo', 'beljakovine'],
-        isFavorite: true,
-        suitableFor: ['pregnancy', 'breastfeeding', 'baby'],
-        nutrientsHighlights: ['beljakovine', 'železo'],
-        prepTimeMinutes: 25,
-      ),
-      const RecipeModel(
-        id: 'r3',
-        title: 'Ovsena kaša z jagodami',
-        tags: ['zajtrk', 'hitro'],
-        isRecent: true,
-        suitableFor: ['pregnancy', 'breastfeeding', 'baby'],
-        nutrientsHighlights: ['vlaknine', 'B12'],
-        prepTimeMinutes: 10,
-      ),
-      const RecipeModel(
-        id: 'r4',
-        title: 'Humus s korenčkom',
-        tags: ['prigrizek', 'hitro'],
-        suitableFor: ['pregnancy', 'breastfeeding', 'baby'],
-        nutrientsHighlights: ['beljakovine', 'železo'],
-        prepTimeMinutes: 15,
-      ),
-      const RecipeModel(
-        id: 'r5',
-        title: 'Tofujev stir-fry z brokolijem',
-        tags: ['večerja', 'beljakovine'],
-        isFavorite: true,
-        suitableFor: ['pregnancy', 'breastfeeding'],
-        nutrientsHighlights: ['beljakovine', 'kalcij', 'železo'],
-        prepTimeMinutes: 20,
-      ),
-    ];
+    return _recipes;
   }
 
-  Future<List<RecipeModel>> getFavorites() async {
-    final all = await getAllRecipes();
-    return all.where((r) => r.isFavorite).toList();
-  }
+  Future<List<RecipeModel>> getFavorites() async =>
+      _recipes.where((r) => r.isFavorite).toList();
 
-  Future<List<RecipeModel>> getRecent() async {
-    final all = await getAllRecipes();
-    return all.where((r) => r.isRecent).toList();
-  }
+  Future<List<RecipeModel>> getRecent() async =>
+      _recipes.where((r) => r.isRecent).toList();
+
+  static const _recipes = [
+    RecipeModel(
+      id: 'r1',
+      title: 'Zeleni smoothie z banano in špinačo',
+      description:
+          'Nežen začetek dneva — folna kislina in železo v enem kozarcu.',
+      emoji: '🥬',
+      tags: ['zajtrk', 'hitro', 'smoothie'],
+      isFavorite: true,
+      isRecent: true,
+      suitableFor: ['nosečnost', 'dojenje'],
+      nutrientsHighlights: ['železo', 'folna kislina'],
+      ingredients: [
+        '1 banana',
+        'pest sveže špinače',
+        '200 ml obogatenega sojinega mleka',
+        '1 žlica mletih lanenih semen',
+        'sok polovice pomaranče (za boljšo absorpcijo železa)',
+      ],
+      steps: [
+        'Vse sestavine daj v mešalnik.',
+        'Mešaj približno minuto, da postane gladko.',
+        'Po želji dodaj led ali malo vode.',
+      ],
+      prepTimeMinutes: 5,
+    ),
+    RecipeModel(
+      id: 'r2',
+      title: 'Lečin curry s kokosovim mlekom',
+      description:
+          'Topel, nasiten obrok, bogat z beljakovinami in železom.',
+      emoji: '🍛',
+      tags: ['kosilo', 'večerja', 'beljakovine'],
+      isFavorite: true,
+      suitableFor: ['nosečnost', 'dojenje', 'malček'],
+      suitableFromMonth: 12,
+      nutrientsHighlights: ['beljakovine', 'železo'],
+      ingredients: [
+        '200 g rdeče leče',
+        '1 čebula, 2 stroka česna',
+        '400 ml kokosovega mleka',
+        '400 g pelatov',
+        'blaga curry mešanica (za malčka manj začinjeno)',
+        'riž za prilogo',
+      ],
+      steps: [
+        'Čebulo in česen prepraži na malo olja.',
+        'Dodaj lečo, pelate in kokosovo mleko.',
+        'Kuhaj 20 minut, da se leča zmehča.',
+        'Za malčka odvzemi porcijo pred dodajanjem soli in ostrih začimb.',
+      ],
+      prepTimeMinutes: 30,
+    ),
+    RecipeModel(
+      id: 'r3',
+      title: 'Ovsena kaša z jagodami in chia semeni',
+      description: 'Preprost zajtrk z vlakninami in obogatenim mlekom.',
+      emoji: '🍓',
+      tags: ['zajtrk', 'hitro'],
+      isRecent: true,
+      suitableFor: ['nosečnost', 'dojenje', 'malček'],
+      suitableFromMonth: 8,
+      nutrientsHighlights: ['vlaknine', 'B12', 'kalcij'],
+      ingredients: [
+        '50 g ovsenih kosmičev',
+        '200 ml obogatenega rastlinskega mleka (B12, kalcij)',
+        'pest jagod',
+        '1 žlička chia semen',
+      ],
+      steps: [
+        'Kosmiče kuhaj v mleku 5 minut.',
+        'Vmešaj chia semena in pusti 2 minuti.',
+        'Dodaj narezane jagode. Za dojenčka kašo zmiksaj.',
+      ],
+      prepTimeMinutes: 10,
+    ),
+    RecipeModel(
+      id: 'r4',
+      title: 'Humus z avokadom',
+      description: 'Kremast namaz — odličen prigrizek ali malica za malčka.',
+      emoji: '🥑',
+      tags: ['prigrizek', 'hitro', 'namaz'],
+      suitableFor: ['nosečnost', 'dojenje', 'malček'],
+      suitableFromMonth: 8,
+      nutrientsHighlights: ['beljakovine', 'železo', 'zdrave maščobe'],
+      ingredients: [
+        '400 g kuhane čičerike',
+        '1 zrel avokado',
+        '2 žlici tahinija',
+        'sok limone',
+        '1 strok česna (za malčka lahko izpustiš)',
+      ],
+      steps: [
+        'Vse sestavine zmiksaj do kremaste teksture.',
+        'Po potrebi dodaj vodo za redkejšo teksturo.',
+        'Postrezi s korenčkom, kumaro ali polnozrnatim kruhom.',
+      ],
+      prepTimeMinutes: 10,
+    ),
+    RecipeModel(
+      id: 'r5',
+      title: 'Tofu stir-fry z brokolijem in sezamom',
+      description: 'Hitra večerja s kalcijem iz tofuja in brokolija.',
+      emoji: '🥦',
+      tags: ['večerja', 'beljakovine', 'hitro'],
+      isFavorite: true,
+      suitableFor: ['nosečnost', 'dojenje'],
+      nutrientsHighlights: ['beljakovine', 'kalcij', 'železo'],
+      ingredients: [
+        '200 g čvrstega tofuja (s kalcijem)',
+        '1 glava brokolija',
+        '2 žlici sojine omake',
+        '1 žlica sezamovih semen',
+        'riž ali rezanci za prilogo',
+      ],
+      steps: [
+        'Tofu nareži na kocke in popeci do zlate barve.',
+        'Dodaj brokoli in praži 5 minut.',
+        'Zalij s sojino omako, potresi s sezamom.',
+      ],
+      prepTimeMinutes: 20,
+    ),
+    RecipeModel(
+      id: 'r6',
+      title: 'Korenčkova kašica',
+      description:
+          'Prva žlička — nežen uvod v gosto hrano okoli 6. meseca.',
+      emoji: '🥕',
+      tags: ['uvajanje hrane', 'hitro'],
+      suitableFor: ['uvajanje hrane'],
+      suitableFromMonth: 6,
+      nutrientsHighlights: ['beta karoten'],
+      ingredients: [
+        '2 korenčka',
+        'malo vode ali materinega/obogatenega mleka',
+      ],
+      steps: [
+        'Korenček skuhaj v pari do mehkega (10–12 minut).',
+        'Zmiksaj z malo tekočine do popolnoma gladke kašice.',
+        'Ohladi na primerno temperaturo in ponudi z žličko — brez hitenja.',
+      ],
+      prepTimeMinutes: 15,
+    ),
+    RecipeModel(
+      id: 'r7',
+      title: 'Kašica iz sladkega krompirja in leče',
+      description:
+          'Ko so prve žličke že znane — vir železa za dojenčka.',
+      emoji: '🍠',
+      tags: ['uvajanje hrane'],
+      suitableFor: ['uvajanje hrane'],
+      suitableFromMonth: 7,
+      nutrientsHighlights: ['železo', 'beljakovine'],
+      ingredients: [
+        '1 manjši sladki krompir',
+        '2 žlici rdeče leče',
+        'voda',
+      ],
+      steps: [
+        'Krompir in lečo kuhaj v vodi 15 minut, da se zmehčata.',
+        'Zmiksaj v gladko kašico.',
+        'Novo živilo uvajaj posamezno in opazuj morebitne reakcije.',
+      ],
+      prepTimeMinutes: 20,
+    ),
+    RecipeModel(
+      id: 'r8',
+      title: 'Mini palačinke z bananinim pirejem',
+      description: 'Mehke palačinke za malčkove prste — brez sladkorja.',
+      emoji: '🥞',
+      tags: ['zajtrk', 'malica'],
+      suitableFor: ['malček'],
+      suitableFromMonth: 10,
+      nutrientsHighlights: ['kalij', 'vlaknine'],
+      ingredients: [
+        '1 zrela banana',
+        '4 žlice ovsene moke',
+        '60 ml obogatenega rastlinskega mleka',
+      ],
+      steps: [
+        'Banano pretlači, vmešaj moko in mleko.',
+        'Peci majhne palačinke na suhi ponvi 2 minuti na vsaki strani.',
+        'Ohladi in nareži na trakove, primerne za male roke.',
+      ],
+      prepTimeMinutes: 15,
+    ),
+    RecipeModel(
+      id: 'r9',
+      title: 'Testenine z bučno omako in kvasnimi kosmiči',
+      description:
+          '»Sirasta« omaka brez sira — malčki jo imajo radi, B12 pride zraven.',
+      emoji: '🎃',
+      tags: ['kosilo', 'večerja'],
+      suitableFor: ['nosečnost', 'dojenje', 'malček'],
+      suitableFromMonth: 10,
+      nutrientsHighlights: ['B12', 'beta karoten'],
+      ingredients: [
+        '250 g polnozrnatih testenin',
+        '300 g buče hokaido',
+        '3 žlice kvasnih kosmičev (obogatenih z B12)',
+        '100 ml rastlinskega mleka',
+      ],
+      steps: [
+        'Bučo skuhaj do mehkega in zmiksaj z mlekom ter kvasnimi kosmiči.',
+        'Testenine skuhaj po navodilih.',
+        'Premešaj z omako; za malčka testenine nareži na manjše kose.',
+      ],
+      prepTimeMinutes: 25,
+    ),
+    RecipeModel(
+      id: 'r10',
+      title: 'Fižolova enolončnica z zelenjavo',
+      description: 'Domača, topla in polna železa ter vlaknin.',
+      emoji: '🍲',
+      tags: ['kosilo', 'večerja', 'beljakovine'],
+      suitableFor: ['nosečnost', 'dojenje', 'malček'],
+      suitableFromMonth: 12,
+      nutrientsHighlights: ['železo', 'beljakovine', 'vlaknine'],
+      ingredients: [
+        '400 g kuhanega fižola',
+        '2 korenčka, 1 krompir, 1 čebula',
+        'zelenjavna jušna osnova (za malčka brez soli)',
+        'peteršilj',
+      ],
+      steps: [
+        'Zelenjavo nareži in prepraži.',
+        'Dodaj fižol in osnovo, kuhaj 20 minut.',
+        'Za malčka porcijo pretlači z vilico.',
+      ],
+      prepTimeMinutes: 35,
+    ),
+    RecipeModel(
+      id: 'r11',
+      title: 'Energijske kroglice z dateljni in orehi',
+      description: 'Prigrizek za utrujene dneve — tudi med dojenjem ponoči.',
+      emoji: '⚡',
+      tags: ['prigrizek', 'hitro', 'sladko'],
+      suitableFor: ['nosečnost', 'dojenje'],
+      nutrientsHighlights: ['omega-3', 'magnezij'],
+      ingredients: [
+        '10 dateljnov',
+        '50 g orehov',
+        '2 žlici ovsenih kosmičev',
+        '1 žlica kakava',
+      ],
+      steps: [
+        'Vse sestavine zmiksaj v lepljivo maso.',
+        'Oblikuj kroglice in jih za pol ure postavi v hladilnik.',
+        'Hrani v hladilniku do en teden.',
+      ],
+      prepTimeMinutes: 15,
+    ),
+    RecipeModel(
+      id: 'r12',
+      title: 'Tempeh v arašidovi omaki',
+      description: 'Bogat vir beljakovin in cinka za obnovo po porodu.',
+      emoji: '🥜',
+      tags: ['večerja', 'beljakovine'],
+      suitableFor: ['nosečnost', 'dojenje'],
+      nutrientsHighlights: ['beljakovine', 'cink', 'železo'],
+      ingredients: [
+        '200 g tempeha',
+        '2 žlici arašidovega masla',
+        '1 žlica sojine omake',
+        'sok limete, malo vode',
+        'riž in kuhana zelenjava za prilogo',
+      ],
+      steps: [
+        'Tempeh nareži in popeci do hrustljavega.',
+        'Zmešaj arašidovo maslo, sojino omako, limeto in vodo v omako.',
+        'Prelij tempeh in postrezi z rižem.',
+      ],
+      prepTimeMinutes: 25,
+    ),
+    RecipeModel(
+      id: 'r13',
+      title: 'Avokadov toast s bučnimi semeni',
+      description: 'Malica v petih minutah — zdrave maščobe in cink.',
+      emoji: '🍞',
+      tags: ['zajtrk', 'malica', 'hitro'],
+      suitableFor: ['nosečnost', 'dojenje'],
+      nutrientsHighlights: ['zdrave maščobe', 'cink', 'folna kislina'],
+      ingredients: [
+        '2 rezini polnozrnatega kruha',
+        '1 avokado',
+        '1 žlica bučnih semen',
+        'limonin sok',
+      ],
+      steps: [
+        'Kruh popeci.',
+        'Avokado pretlači z limoninim sokom.',
+        'Namaži in potresi z bučnimi semeni.',
+      ],
+      prepTimeMinutes: 5,
+    ),
+    RecipeModel(
+      id: 'r14',
+      title: 'Prosena kaša z jabolki in cimetom',
+      description: 'Topel zajtrk za vso družino — od dojenčka do mame.',
+      emoji: '🍎',
+      tags: ['zajtrk'],
+      suitableFor: ['nosečnost', 'dojenje', 'uvajanje hrane', 'malček'],
+      suitableFromMonth: 8,
+      nutrientsHighlights: ['železo', 'magnezij'],
+      ingredients: [
+        '100 g prosa',
+        '1 jabolko',
+        '300 ml obogatenega rastlinskega mleka',
+        'ščepec cimeta',
+      ],
+      steps: [
+        'Proso dobro splakni in kuhaj v mleku 15 minut.',
+        'Jabolko naribaj in vmešaj v kašo.',
+        'Za dojenčka kašo zmiksaj do gladkega.',
+      ],
+      prepTimeMinutes: 20,
+    ),
+  ];
 }
