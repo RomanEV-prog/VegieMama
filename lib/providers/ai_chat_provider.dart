@@ -7,7 +7,7 @@ class AIChatProvider extends ChangeNotifier {
 
   List<AIAssistantModel> _assistants = [];
   String? _activeAssistantId;
-  List<Map<String, String>> _messages = [];
+  final List<Map<String, String>> _messages = [];
   bool _isLoading = false;
   bool _isSending = false;
   String? _error;

@@ -8,7 +8,7 @@ class RecipesProvider extends ChangeNotifier {
   List<RecipeModel> _recipes = [];
   List<RecipeModel> _favorites = [];
   List<RecipeModel> _recent = [];
-  Set<String> _activeFilters = {};
+  final Set<String> _activeFilters = {};
   bool _isLoading = false;
   String? _error;
 

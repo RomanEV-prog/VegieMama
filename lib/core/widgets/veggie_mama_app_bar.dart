@@ -20,7 +20,7 @@ class VeggieMamaAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       automaticallyImplyLeading: showBack,
       actions: actions,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: AppRadius.appBarRadius,
       ),
     );

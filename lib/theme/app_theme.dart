@@ -23,7 +23,7 @@ class AppTheme {
           isDark ? colorScheme.surface : AppColors.peach,
       fontFamily: 'Roboto',
       textTheme: AppTextTheme.textTheme,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.mintGreen,
         foregroundColor: Colors.white,
         elevation: 0,

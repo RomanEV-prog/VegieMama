@@ -12,6 +12,6 @@ class AppRadius {
   static final BorderRadius cardRadius = BorderRadius.circular(lg);
   static final BorderRadius buttonRadius = BorderRadius.circular(lg);
   static final BorderRadius chipRadius = BorderRadius.circular(sm);
-  static final BorderRadius appBarRadius =
-      const BorderRadius.vertical(bottom: Radius.circular(xl));
+  static const BorderRadius appBarRadius =
+      BorderRadius.vertical(bottom: Radius.circular(xl));
 }
