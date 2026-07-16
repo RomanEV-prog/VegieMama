@@ -101,14 +101,12 @@ Kaj je narejeno:
 
 Kaj še ni narejeno:
 
-* ❌ vsi zasloni so placeholderji (»skoraj tu 🌿«),
-* ❌ globalni widgeti so večinoma prazne škatle,
+* ❌ zasloni razen Profila so placeholderji (»skoraj tu 🌿«),
 * ❌ persistence ne deluje (Hive/SharedPreferences servisi obstajajo, a se ne uporabljajo),
 * ❌ l10n je samo skeleton (~19 vrstic na jezik), UI stringi so hardcodani v slovenščini,
 * ❌ `services/remote/` ne obstaja, AI je mock,
-* ❌ ni testov,
+* ⚠️ testi obstajajo samo za Profil,
 * ❌ assets mape so prazne,
-* ⚠️ `theme/theme.dart` in `theme/app_theme.dart` se prekrivata — poenotiti v Fazi 2,
 * ⚠️ onboarding ni vezan na začetni flow (aplikacija se vedno odpre na `/`).
 
 ---
@@ -352,7 +350,7 @@ Podroben načrt vsake faze je v `docs/phases/faza-N-*.md`. Povzetek:
 | Faza | Vsebina | Status |
 |---|---|---|
 | 1 | Tehnična osnova: pubspec, theme, router, providerji, modeli, mocki | ✅ končana |
-| 2 | Profile vertical slice | ⬜ |
+| 2 | Profile vertical slice | ✅ končana |
 | 3 | Tracking vertical slice | ⬜ |
 | 4 | Recipes vertical slice | ⬜ |
 | 5 | AI vertical slice | ⬜ |

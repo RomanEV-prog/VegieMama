@@ -30,7 +30,7 @@ class EmotionalFeedback {
   /// Water tracking encouragement
   static String waterProgress(double progress) {
     if (progress >= 1.0) {
-      return 'Toll! Danes si spila dovolj vode 💧';
+      return 'Odlično! Danes si spila dovolj vode 💧';
     }
     if (progress >= 0.7) {
       return 'Super, skoraj si! Še malo vode 💧';
@@ -55,7 +55,7 @@ class EmotionalFeedback {
   /// General motivational banner messages
   static String motivationalMessage() {
     final messages = [
-      'Vsak korak šteje, tudi najmanši 🌿',
+      'Vsak korak šteje, tudi najmanjši 🌿',
       'Skrbiš zase in za svojega malčka – to je super 💚',
       'Danes je dober dan za nežnost do sebe 🌸',
       'Ni popolnega dneva. Je pa tvoj dan. In to je dovolj 💚',

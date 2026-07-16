@@ -1,6 +1,11 @@
 # Faza 2 – Profile vertical slice
 
-**Status: ⬜ ni začeta**
+**Status: ✅ končana (16. 7. 2026)**
+
+> Opomba ob zaključku: vse točke izvedene; `UserProgressProvider` obstaja in je registriran,
+> njegove izpeljane indikatorje pa bo prvi zares uporabil Home/Tracking (Faza 3), ker
+> `TrackingSummary` po načrtu bere neposredno iz `TrackingProvider`. Sprejemni kriteriji
+> potrjeni s widget testi v `test/profile_screen_test.dart`.
 
 ## Cilj
 
@@ -10,23 +15,23 @@ Prvi pravi zaslon aplikacije: profil uporabnice, ki bere podatke iz providerjev 
 
 ### Zasloni in widgeti
 
-* [ ] `ProfileScreen` — sestavljen iz sekcij, brez lastne poslovne logike
-* [ ] preselitev profilnih widgetov iz `lib/widgets/` v `lib/screens/profile/widgets/`:
-  * [ ] `profile_header.dart` — ime, avatar, faza (teden nosečnosti / starost otroka)
-  * [ ] `tracking_summary.dart` — povzetek dneva iz `TrackingProvider` + quick add (voda)
-  * [ ] `achievements_section.dart` — dosežki iz `AchievementsProvider` (horizontalni seznam badge-ev)
-  * [ ] `ai_assistants_section.dart` — vstop v AI klepet
-  * [ ] `favorite_recipes_section.dart` — najljubši recepti iz `RecipesProvider`
-  * [ ] `premium_status_card.dart` — nežen prikaz premium statusa
-  * [ ] `settings_preview_section.dart` — vstop v nastavitve
-* [ ] globalni `lib/widgets/` obdrži samo: motivational_banner, achievement_badge, section_title, primary_action_button, info_card
+* [x] `ProfileScreen` — sestavljen iz sekcij, brez lastne poslovne logike
+* [x] preselitev profilnih widgetov iz `lib/widgets/` v `lib/screens/profile/widgets/`:
+  * [x] `profile_header.dart` — ime, avatar, faza (teden nosečnosti / starost otroka)
+  * [x] `tracking_summary.dart` — povzetek dneva iz `TrackingProvider` + quick add (voda)
+  * [x] `achievements_section.dart` — dosežki iz `AchievementsProvider` (horizontalni seznam badge-ev)
+  * [x] `ai_assistants_section.dart` — vstop v AI klepet
+  * [x] `favorite_recipes_section.dart` — najljubši recepti iz `RecipesProvider`
+  * [x] `premium_status_card.dart` — nežen prikaz premium statusa
+  * [x] `settings_preview_section.dart` — vstop v nastavitve
+* [x] globalni `lib/widgets/` obdrži samo: motivational_banner, achievement_badge, section_title, primary_action_button, info_card
 
 ### Tehnično
 
-* [ ] izračun tedna nosečnosti / starosti otroka v `date_helper.dart` (ne v widgetih)
-* [ ] `UserProgressProvider` napolni blage indikatorje napredka
-* [ ] poenotenje `theme/theme.dart` in `theme/app_theme.dart` v eno datoteko
-* [ ] loading/empty/error stanja prek obstoječih core widgetov
+* [x] izračun tedna nosečnosti / starosti otroka v `date_helper.dart` (ne v widgetih)
+* [x] `UserProgressProvider` napolni blage indikatorje napredka
+* [x] poenotenje `theme/theme.dart` in `theme/app_theme.dart` v eno datoteko
+* [x] loading/empty/error stanja prek obstoječih core widgetov
 
 ## Pravila
 

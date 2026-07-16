@@ -5,7 +5,7 @@ Vsaka faza je samostojen, zaključen kos dela (vertical slice). Faza je končana
 | Faza | Dokument | Status |
 |---|---|---|
 | 1 | [Tehnična osnova](faza-1-tehnicna-osnova.md) | ✅ končana |
-| 2 | [Profile vertical slice](faza-2-profil.md) | ⬜ |
+| 2 | [Profile vertical slice](faza-2-profil.md) | ✅ končana |
 | 3 | [Tracking vertical slice](faza-3-tracking.md) | ⬜ |
 | 4 | [Recipes vertical slice](faza-4-recepti.md) | ⬜ |
 | 5 | [AI vertical slice](faza-5-ai.md) | ⬜ |

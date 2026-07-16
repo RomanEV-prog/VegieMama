@@ -31,7 +31,7 @@ class AppTheme {
           borderRadius: AppRadius.appBarRadius,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: isDark
             ? AppColors.lavender.withValues(alpha: 0.25)
             : AppColors.lavender.withValues(alpha: 0.15),
