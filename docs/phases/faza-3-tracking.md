@@ -1,6 +1,6 @@
 # Faza 3 – Tracking vertical slice
 
-**Status: ⬜ ni začeta**
+**Status: ✅ končana (16. 7. 2026)**
 
 ## Cilj
 
@@ -10,20 +10,20 @@ Polni zaslon dnevnega sledenja: tekočine, obroki, počutje, spanje, vitamini, d
 
 ### Zasloni in widgeti (`screens/tracking/widgets/`)
 
-* [ ] `TrackingScreen` — dnevni pregled kot privzeti pogled
-* [ ] `water_tracker_card.dart` — napredek + quick add (npr. +250 ml), animacija ob dodajanju
-* [ ] `meals_card.dart` — beleženje obrokov
-* [ ] `mood_selector.dart` — izbira počutja (1–5, nežne ikone, brez ocenjevanja)
-* [ ] `sleep_card.dart` — ure spanja
-* [ ] `vitamins_card.dart` — vitamini/dodatki (B12, železo, D …) kot čipi za odkljukanje
-* [ ] `breastfeeding_card.dart` — prikaže se samo za fazo po porodu / dojenček
-* [ ] `weekly_overview.dart` — tedenski pregled iz `getWeekData()`, nežni trendi brez rdečih opozoril
+* [x] `TrackingScreen` — dnevni pregled kot privzeti pogled
+* [x] `water_tracker_card.dart` — napredek + quick add (npr. +250 ml), animacija ob dodajanju
+* [x] `meals_card.dart` — beleženje obrokov
+* [x] `mood_selector.dart` — izbira počutja (1–5, nežne ikone, brez ocenjevanja)
+* [x] `sleep_card.dart` — ure spanja
+* [x] `vitamins_card.dart` — vitamini/dodatki (B12, železo, D …) kot čipi za odkljukanje
+* [x] `breastfeeding_card.dart` — prikaže se samo za fazo po porodu / dojenček
+* [x] `weekly_overview.dart` — tedenski pregled iz `getWeekData()`, nežni trendi brez rdečih opozoril
 
 ### Tehnično
 
-* [ ] `TrackingProvider`: vse mutacije po spremembi pokličejo `_repository.saveTrackingData(...)` (mock zaenkrat samo simulira shranjevanje)
-* [ ] prikaz kartic pogojen s `userType` (dojenje samo, ko je relevantno)
-* [ ] `emotional_feedback.dart` generira nežne povratne stavke ob vnosih
+* [x] `TrackingProvider`: vse mutacije po spremembi pokličejo `_repository.saveTrackingData(...)` (mock zaenkrat samo simulira shranjevanje)
+* [x] prikaz kartic pogojen s `userType` (dojenje samo, ko je relevantno)
+* [x] `emotional_feedback.dart` generira nežne povratne stavke ob vnosih
 
 ## Sprejemni kriteriji
 

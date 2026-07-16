@@ -40,52 +40,40 @@ class TrackingProvider extends ChangeNotifier {
     }
   }
 
-  void addWaterIntake(int ml) {
-    if (_todayData != null) {
-      _todayData = _todayData!.copyWith(
-        waterIntake: _todayData!.waterIntake + ml,
-      );
-      notifyListeners();
-    }
+  /// Applies a change to today's data, notifies the UI immediately and
+  /// persists in the background. Persistence failures are kept quiet for
+  /// the user (data stays in memory) but recorded in [error].
+  void _mutate(TrackingDataModel Function(TrackingDataModel) change) {
+    final today = _todayData;
+    if (today == null) return;
+
+    _todayData = change(today);
+    notifyListeners();
+
+    _repository.saveTrackingData(_todayData!).catchError((Object e) {
+      _error = e.toString();
+    });
   }
 
-  void setMood(int rating) {
-    if (_todayData != null) {
-      _todayData = _todayData!.copyWith(moodRating: rating);
-      notifyListeners();
-    }
-  }
+  void addWaterIntake(int ml) =>
+      _mutate((t) => t.copyWith(waterIntake: t.waterIntake + ml));
 
-  void setSleep(double hours) {
-    if (_todayData != null) {
-      _todayData = _todayData!.copyWith(sleepHours: hours);
-      notifyListeners();
-    }
-  }
+  void setMood(int rating) => _mutate((t) => t.copyWith(moodRating: rating));
 
-  void logMeal() {
-    if (_todayData != null) {
-      _todayData = _todayData!.copyWith(
-        mealsLogged: _todayData!.mealsLogged + 1,
-      );
-      notifyListeners();
-    }
-  }
+  void setSleep(double hours) => _mutate((t) => t.copyWith(sleepHours: hours));
 
-  void addVitamin(String vitamin) {
-    if (_todayData != null) {
-      final vitamins = List<String>.from(_todayData!.vitamins)..add(vitamin);
-      _todayData = _todayData!.copyWith(vitamins: vitamins);
-      notifyListeners();
-    }
-  }
+  void logMeal() => _mutate((t) => t.copyWith(mealsLogged: t.mealsLogged + 1));
 
-  void logBreastfeeding() {
-    if (_todayData != null) {
-      _todayData = _todayData!.copyWith(
-        breastfeedingSessions: _todayData!.breastfeedingSessions + 1,
-      );
-      notifyListeners();
-    }
-  }
+  void toggleVitamin(String vitamin) => _mutate((t) {
+        final vitamins = List<String>.from(t.vitamins);
+        if (vitamins.contains(vitamin)) {
+          vitamins.remove(vitamin);
+        } else {
+          vitamins.add(vitamin);
+        }
+        return t.copyWith(vitamins: vitamins);
+      });
+
+  void logBreastfeeding() => _mutate(
+      (t) => t.copyWith(breastfeedingSessions: t.breastfeedingSessions + 1));
 }

@@ -101,11 +101,11 @@ Kaj je narejeno:
 
 Kaj še ni narejeno:
 
-* ❌ zasloni razen Profila so placeholderji (»skoraj tu 🌿«),
+* ❌ zasloni razen Profila in Sledenja so placeholderji (»skoraj tu 🌿«),
 * ❌ persistence ne deluje (Hive/SharedPreferences servisi obstajajo, a se ne uporabljajo),
 * ❌ l10n je samo skeleton (~19 vrstic na jezik), UI stringi so hardcodani v slovenščini,
 * ❌ `services/remote/` ne obstaja, AI je mock,
-* ⚠️ testi obstajajo samo za Profil,
+* ⚠️ testi obstajajo za Profil in Sledenje,
 * ❌ assets mape so prazne,
 * ⚠️ onboarding ni vezan na začetni flow (aplikacija se vedno odpre na `/`).
 
@@ -351,7 +351,7 @@ Podroben načrt vsake faze je v `docs/phases/faza-N-*.md`. Povzetek:
 |---|---|---|
 | 1 | Tehnična osnova: pubspec, theme, router, providerji, modeli, mocki | ✅ končana |
 | 2 | Profile vertical slice | ✅ končana |
-| 3 | Tracking vertical slice | ⬜ |
+| 3 | Tracking vertical slice | ✅ končana |
 | 4 | Recipes vertical slice | ⬜ |
 | 5 | AI vertical slice | ⬜ |
 | 6 | Onboarding + persistence | ⬜ |
