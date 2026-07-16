@@ -1,0 +1,19 @@
+{
+  "@@locale": "sl",
+  "appTitle": "VeggieMama",
+  "navHome": "Domov",
+  "navTracking": "Sledenje",
+  "navRecipes": "Recepti",
+  "navAI": "AI",
+  "navProfile": "Profil",
+  "loading": "Nalaganje...",
+  "error": "Prišlo je do težave",
+  "retry": "Poskusi znova",
+  "profile": "Profil",
+  "settings": "Nastavitve",
+  "premiumStatus": "Premium status",
+  "achievements": "Dosežki",
+  "favoriteRecipes": "Najljubši recepti",
+  "aiAssistants": "AI asistenti",
+  "trackingSummary": "Povzetek sledenja"
+}

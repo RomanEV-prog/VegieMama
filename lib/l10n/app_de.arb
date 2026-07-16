@@ -1,0 +1,19 @@
+{
+  "@@locale": "de",
+  "appTitle": "VeggieMama",
+  "navHome": "Startseite",
+  "navTracking": "Tracking",
+  "navRecipes": "Rezepte",
+  "navAI": "KI",
+  "navProfile": "Profil",
+  "loading": "Laden...",
+  "error": "Etwas ist schiefgelaufen",
+  "retry": "Nochmals versuchen",
+  "profile": "Profil",
+  "settings": "Einstellungen",
+  "premiumStatus": "Premium-Status",
+  "achievements": "Erfolge",
+  "favoriteRecipes": "Lieblingsrezepte",
+  "aiAssistants": "KI-Assistenten",
+  "trackingSummary": "Tracking-Zusammenfassung"
+}
