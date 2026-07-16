@@ -23,9 +23,14 @@ class ProfileHeader extends StatelessWidget {
         return 'Mamica po porodu';
       case UserType.babyMom:
         if (user.birthDate != null) {
-          return 'Malček: ${DateHelper.babyAgeDisplay(user.birthDate!)}';
+          return 'Dojenček: ${DateHelper.babyAgeDisplay(user.birthDate!)}';
         }
         return 'Mamica z dojenčkom';
+      case UserType.toddlerMom:
+        if (user.birthDate != null) {
+          return 'Malček: ${DateHelper.babyAgeDisplay(user.birthDate!)}';
+        }
+        return 'Mamica z malčkom';
     }
   }
 

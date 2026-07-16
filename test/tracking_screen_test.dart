@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:veggiemama/providers/tracking_provider.dart';
 import 'package:veggiemama/providers/user_provider.dart';
 import 'package:veggiemama/screens/tracking/tracking_screen.dart';
+import 'helpers/test_env.dart';
 
 Widget _buildTracking() {
   return MultiProvider(
@@ -24,6 +25,10 @@ Future<void> _pumpLoaded(WidgetTester tester) async {
 }
 
 void main() {
+  setUp(() async {
+    await initTestEnv(user: testUser(), today: testToday());
+  });
+
   testWidgets('tracking screen shows all daily cards', (tester) async {
     await _pumpLoaded(tester);
 

@@ -37,9 +37,10 @@ class RecipesProvider extends ChangeNotifier {
     try {
       // Copy: the source list may be unmodifiable (const mock data),
       // while toggleFavorite/markRecent replace items in place.
+      // Favorites/recent are derived here — one fetch, no extra delays.
       _recipes = List.of(await _repository.getAllRecipes());
-      _favorites = List.of(await _repository.getFavorites());
-      _recent = List.of(await _repository.getRecent());
+      _favorites = _recipes.where((r) => r.isFavorite).toList();
+      _recent = _recipes.where((r) => r.isRecent).toList();
     } catch (e) {
       _error = e.toString();
     } finally {
@@ -70,6 +71,12 @@ class RecipesProvider extends ChangeNotifier {
     _recipes[index] = recipe.copyWith(isFavorite: !recipe.isFavorite);
     _favorites = _recipes.where((r) => r.isFavorite).toList();
     notifyListeners();
+
+    _repository
+        .saveFavoriteIds(_favorites.map((r) => r.id).toList())
+        .catchError((Object e) {
+      _error = e.toString();
+    });
   }
 
   RecipeModel? recipeById(String id) =>

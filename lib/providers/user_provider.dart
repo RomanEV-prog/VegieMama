@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import '../models/user_model.dart';
+import '../services/local/preferences_service.dart';
 import '../services/repositories/user_repository.dart';
 
 class UserProvider extends ChangeNotifier {
   final UserRepository _repository = UserRepository();
 
   UserModel? _user;
-  bool _isLoading = false;
+  bool _isLoading = true;
   String? _error;
 
   UserModel? get user => _user;
@@ -31,9 +32,21 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
+  /// Creates the user at the end of onboarding and persists everything.
+  Future<void> createUser(UserModel user) async {
+    _user = user;
+    _isLoading = false;
+    notifyListeners();
+    await _repository.saveUser(user);
+    if (PreferencesService.instance.isInitialized) {
+      await PreferencesService.instance
+          .setOnboardingCompleted(user.onboardingCompleted);
+    }
+  }
+
   Future<void> updateUser(UserModel updatedUser) async {
     try {
-      await _repository.updateUser(updatedUser);
+      await _repository.saveUser(updatedUser);
       _user = updatedUser;
       notifyListeners();
     } catch (e) {
@@ -42,10 +55,10 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
-  void completeOnboarding() {
-    if (_user != null) {
-      _user = _user!.copyWith(onboardingCompleted: true);
-      notifyListeners();
-    }
+  /// Removes the user (part of "delete my data").
+  Future<void> reset() async {
+    await _repository.deleteUser();
+    _user = null;
+    notifyListeners();
   }
 }

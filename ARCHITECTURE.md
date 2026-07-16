@@ -102,12 +102,12 @@ Kaj je narejeno:
 Kaj še ni narejeno:
 
 * ❌ zasloni razen Profila, Sledenja in Receptov so placeholderji (»skoraj tu 🌿«),
-* ❌ persistence ne deluje (Hive/SharedPreferences servisi obstajajo, a se ne uporabljajo),
+* ✅ persistence deluje (Hive za user/tracking/favorites, SharedPreferences za temo/jezik),
 * ❌ l10n je samo skeleton (~19 vrstic na jezik), UI stringi so hardcodani v slovenščini,
 * ❌ `services/remote/` ne obstaja, AI je mock,
 * ⚠️ testi obstajajo za Profil, Sledenje in Recepte,
 * ❌ assets mape so prazne,
-* ⚠️ onboarding ni vezan na začetni flow (aplikacija se vedno odpre na `/`).
+* ✅ onboarding je vezan na začetni flow (router redirect).
 
 ---
 
@@ -353,8 +353,8 @@ Podroben načrt vsake faze je v `docs/phases/faza-N-*.md`. Povzetek:
 | 2 | Profile vertical slice | ✅ končana |
 | 3 | Tracking vertical slice | ✅ končana |
 | 4 | Recipes vertical slice | ✅ končana |
-| 5 | AI vertical slice | ⬜ |
-| 6 | Onboarding + persistence | ⬜ |
+| 5 | AI vertical slice | ⏸️ preskočena |
+| 6 | Onboarding + persistence | ✅ končana |
 | 7 | Otrok 0–3: profil otroka, uvajanje hrane, prehrana malčka | ⬜ |
 | 8 | Polish: l10n, testi, dosežki, priprava na izdajo | ⬜ |
 

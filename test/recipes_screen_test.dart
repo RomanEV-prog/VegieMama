@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:veggiemama/providers/recipes_provider.dart';
 import 'package:veggiemama/screens/recipes/recipe_detail_screen.dart';
 import 'package:veggiemama/screens/recipes/recipes_screen.dart';
+import 'helpers/test_env.dart';
 
 Widget _buildApp({String initialLocation = '/recipes'}) {
   final router = GoRouter(
@@ -32,6 +33,10 @@ Future<void> _pumpLoaded(WidgetTester tester,
 }
 
 void main() {
+  setUp(() async {
+    await initTestEnv();
+  });
+
   testWidgets('recipes screen shows favorites row, filters and list',
       (tester) async {
     await _pumpLoaded(tester);

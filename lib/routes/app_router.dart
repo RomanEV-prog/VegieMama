@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../core/constants/app_colors.dart';
+import '../providers/user_provider.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/tracking/tracking_screen.dart';
 import '../screens/recipes/recipes_screen.dart';
@@ -13,62 +14,78 @@ import '../screens/onboarding/onboarding_screen.dart';
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
-final GoRouter appRouter = GoRouter(
-  navigatorKey: _rootNavigatorKey,
-  initialLocation: '/',
-  routes: [
-    // Onboarding (outside shell)
-    GoRoute(
-      path: '/onboarding',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (context, state) => const OnboardingScreen(),
-    ),
+/// Builds the app router. Requires the [UserProvider] instance so the
+/// redirect can gate everything behind onboarding.
+GoRouter createAppRouter(UserProvider userProvider) {
+  return GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: '/',
+    refreshListenable: userProvider,
+    redirect: (context, state) {
+      // While the user is still loading, stay put (screens show loaders).
+      if (userProvider.isLoading) return null;
 
-    // Settings (outside shell, has back button)
-    GoRoute(
-      path: '/settings',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (context, state) => const SettingsScreen(),
-    ),
+      final completed = userProvider.onboardingCompleted;
+      final onOnboarding = state.uri.path == '/onboarding';
 
-    // Recipe detail (outside shell, has back button)
-    GoRoute(
-      path: '/recipes/:id',
-      parentNavigatorKey: _rootNavigatorKey,
-      builder: (context, state) => RecipeDetailScreen(
-        recipeId: state.pathParameters['id']!,
+      if (!completed && !onOnboarding) return '/onboarding';
+      if (completed && onOnboarding) return '/';
+      return null;
+    },
+    routes: [
+      // Onboarding (outside shell)
+      GoRoute(
+        path: '/onboarding',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const OnboardingScreen(),
       ),
-    ),
 
-    // Main shell with bottom navigation
-    ShellRoute(
-      navigatorKey: _shellNavigatorKey,
-      builder: (context, state, child) => _ShellScaffold(child: child),
-      routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) => const HomeScreen(),
+      // Settings (outside shell, has back button)
+      GoRoute(
+        path: '/settings',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const SettingsScreen(),
+      ),
+
+      // Recipe detail (outside shell, has back button)
+      GoRoute(
+        path: '/recipes/:id',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => RecipeDetailScreen(
+          recipeId: state.pathParameters['id']!,
         ),
-        GoRoute(
-          path: '/tracking',
-          builder: (context, state) => const TrackingScreen(),
-        ),
-        GoRoute(
-          path: '/recipes',
-          builder: (context, state) => const RecipesScreen(),
-        ),
-        GoRoute(
-          path: '/ai',
-          builder: (context, state) => const AIAssistantScreen(),
-        ),
-        GoRoute(
-          path: '/profile',
-          builder: (context, state) => const ProfileScreen(),
-        ),
-      ],
-    ),
-  ],
-);
+      ),
+
+      // Main shell with bottom navigation
+      ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) => _ShellScaffold(child: child),
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => const HomeScreen(),
+          ),
+          GoRoute(
+            path: '/tracking',
+            builder: (context, state) => const TrackingScreen(),
+          ),
+          GoRoute(
+            path: '/recipes',
+            builder: (context, state) => const RecipesScreen(),
+          ),
+          GoRoute(
+            path: '/ai',
+            builder: (context, state) => const AIAssistantScreen(),
+          ),
+          GoRoute(
+            path: '/profile',
+            builder: (context, state) => const ProfileScreen(),
+          ),
+        ],
+      ),
+    ],
+  );
+}
 
 /// Shell scaffold with persistent bottom navigation
 class _ShellScaffold extends StatelessWidget {
@@ -102,4 +119,4 @@ class _ShellScaffold extends StatelessWidget {
       ),
     );
   }
-} 
+}

@@ -9,6 +9,7 @@ import 'package:veggiemama/providers/theme_provider.dart';
 import 'package:veggiemama/providers/tracking_provider.dart';
 import 'package:veggiemama/providers/user_provider.dart';
 import 'package:veggiemama/screens/profile/profile_screen.dart';
+import 'helpers/test_env.dart';
 
 Widget _buildProfile() {
   return MultiProvider(
@@ -27,6 +28,10 @@ Widget _buildProfile() {
 }
 
 void main() {
+  setUp(() async {
+    await initTestEnv(user: testUser(), today: testToday());
+  });
+
   testWidgets('profile shows mock user, tracking and achievements',
       (tester) async {
     await tester.pumpWidget(_buildProfile());

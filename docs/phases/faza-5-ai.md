@@ -1,6 +1,6 @@
 # Faza 5 – AI vertical slice
 
-**Status: ⬜ ni začeta**
+**Status: ⏸️ preskočena na zahtevo (16. 7. 2026) — AI klepet zaenkrat ostaja mock; vrnemo se po Fazi 7 ali 8, če bo potrebno**
 
 ## Cilj
 

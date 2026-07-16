@@ -1,15 +1,22 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Wrapper around SharedPreferences for simple key-value storage
+/// Wrapper around SharedPreferences for simple key-value storage.
+/// Initialize once in main() via [init].
 class PreferencesService {
+  PreferencesService._();
+  static final PreferencesService instance = PreferencesService._();
+
   SharedPreferences? _prefs;
+
+  bool get isInitialized => _prefs != null;
 
   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
   }
 
   SharedPreferences get _p {
-    assert(_prefs != null, 'PreferencesService not initialized. Call init() first.');
+    assert(_prefs != null,
+        'PreferencesService not initialized. Call init() first.');
     return _prefs!;
   }
 
@@ -26,4 +33,7 @@ class PreferencesService {
       _p.setBool('onboarding_completed', value);
   bool getOnboardingCompleted() =>
       _p.getBool('onboarding_completed') ?? false;
+
+  /// Resets every preference — used by "delete my data" in settings.
+  Future<void> clearAll() => _p.clear();
 }

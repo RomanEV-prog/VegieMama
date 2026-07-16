@@ -3,6 +3,7 @@ enum UserType {
   pregnant,   // nosečnica
   postpartum, // mamica po porodu
   babyMom,    // mamica z dojenčkom
+  toddlerMom, // mamica z malčkom (1–3 leta)
 }
 
 class UserModel {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'providers/user_provider.dart';
@@ -12,14 +13,24 @@ import 'providers/user_progress_provider.dart';
 import 'routes/app_router.dart';
 import 'theme/app_theme.dart';
 
-class VeggieMamaApp extends StatelessWidget {
+class VeggieMamaApp extends StatefulWidget {
   const VeggieMamaApp({super.key});
+
+  @override
+  State<VeggieMamaApp> createState() => _VeggieMamaAppState();
+}
+
+class _VeggieMamaAppState extends State<VeggieMamaApp> {
+  // The router's redirect watches this provider, so both share one
+  // instance created here rather than inside MultiProvider.
+  late final UserProvider _userProvider = UserProvider()..loadUser();
+  late final GoRouter _router = createAppRouter(_userProvider);
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider()..loadUser()),
+        ChangeNotifierProvider.value(value: _userProvider),
         ChangeNotifierProvider(create: (_) => TrackingProvider()..loadTodayData()),
         ChangeNotifierProvider(create: (_) => AchievementsProvider()..loadAchievements()),
         ChangeNotifierProvider(create: (_) => RecipesProvider()..loadRecipes()),
@@ -45,7 +56,7 @@ class VeggieMamaApp extends StatelessWidget {
           return MaterialApp.router(
             title: 'VeggieMama',
             debugShowCheckedModeBanner: false,
-            routerConfig: appRouter,
+            routerConfig: _router,
             theme: AppTheme.light,
             darkTheme: AppTheme.dark,
             themeMode: themeProvider.themeMode,
@@ -61,4 +72,4 @@ class VeggieMamaApp extends StatelessWidget {
       ),
     );
   }
-} 
+}
