@@ -39,4 +39,4 @@ Prototip postane izdelek: prevodi, testi, dosežki, vizualni polish in tehnično
 * Aplikacija je v celoti uporabna v vseh treh jezikih.
 * Testi tečejo in so zeleni; `flutter analyze` brez opozoril.
 * Ni placeholderjev in »skoraj tu« besedil.
-* Pripravljen release build (Android kot prva tarča).
+* Pripravljen release build (Android kot prva tarča) — Play Store checklist v [design-guidelines.md §8](../design-guidelines.md).

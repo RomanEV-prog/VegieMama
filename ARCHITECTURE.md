@@ -1,6 +1,6 @@
 # VeggieMama – arhitektura projekta (v2)
 
-> Posodobljeno: 16. 7. 2026. Ta dokument nadomešča prejšnjo datoteko `md` in je referenčna osnova za nadaljnji razvoj. Podrobni načrti po fazah so v `docs/phases/`.
+> Posodobljeno: 16. 7. 2026. Ta dokument nadomešča prejšnjo datoteko `md` in je referenčna osnova za nadaljnji razvoj. Podrobni načrti po fazah so v `docs/phases/`. Oblikovna in UX pravila: [docs/design-guidelines.md](docs/design-guidelines.md). Delovni proces (commiti, review, triage napak): [docs/workflow.md](docs/workflow.md).
 
 ## Namen dokumenta
 

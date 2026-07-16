@@ -13,7 +13,7 @@ Vsaka faza je samostojen, zaključen kos dela (vertical slice). Faza je končana
 | 7 | [Otrok 0–3](faza-7-otrok-0-3.md) | ⬜ |
 | 8 | [Polish in priprava na izdajo](faza-8-polish.md) | ⬜ |
 
-Arhitekturna pravila in produktna usmeritev: [ARCHITECTURE.md](../../ARCHITECTURE.md).
+Arhitekturna pravila in produktna usmeritev: [ARCHITECTURE.md](../../ARCHITECTURE.md). Oblikovne/UX smernice: [design-guidelines.md](../design-guidelines.md). Delovni proces: [workflow.md](../workflow.md).
 
 ## Pravila dela po fazah
 
