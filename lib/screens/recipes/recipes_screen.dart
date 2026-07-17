@@ -5,13 +5,37 @@ import '../../core/widgets/empty_state.dart';
 import '../../core/widgets/error_state.dart';
 import '../../core/widgets/loading_state.dart';
 import '../../core/widgets/veggie_mama_app_bar.dart';
+import '../../models/user_model.dart';
 import '../../providers/recipes_provider.dart';
+import '../../providers/user_provider.dart';
 import 'widgets/favorites_row.dart';
 import 'widgets/recipe_card.dart';
 import 'widgets/recipe_filters.dart';
 
-class RecipesScreen extends StatelessWidget {
+class RecipesScreen extends StatefulWidget {
   const RecipesScreen({super.key});
+
+  @override
+  State<RecipesScreen> createState() => _RecipesScreenState();
+}
+
+class _RecipesScreenState extends State<RecipesScreen> {
+  static const _defaultFilterByType = {
+    UserType.babyMom: 'uvajanje hrane',
+    UserType.toddlerMom: 'malček',
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final userType = context.read<UserProvider>().userType;
+      context
+          .read<RecipesProvider>()
+          .applyDefaultFilter(_defaultFilterByType[userType]);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

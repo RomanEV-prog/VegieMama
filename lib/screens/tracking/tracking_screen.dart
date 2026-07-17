@@ -7,6 +7,7 @@ import '../../core/widgets/veggie_mama_app_bar.dart';
 import '../../models/user_model.dart';
 import '../../providers/tracking_provider.dart';
 import '../../providers/user_provider.dart';
+import 'widgets/baby_meals_card.dart';
 import 'widgets/breastfeeding_card.dart';
 import 'widgets/meals_card.dart';
 import 'widgets/mood_selector.dart';
@@ -78,6 +79,14 @@ class _TrackingScreenState extends State<TrackingScreen> {
                 const SizedBox(height: AppSpacing.md),
                 if (_showBreastfeeding(userType)) ...[
                   BreastfeedingCard(today: today),
+                  const SizedBox(height: AppSpacing.md),
+                ],
+                if (userType == UserType.babyMom ||
+                    userType == UserType.toddlerMom) ...[
+                  BabyMealsCard(
+                    today: today,
+                    showNutrients: userType == UserType.toddlerMom,
+                  ),
                   const SizedBox(height: AppSpacing.md),
                 ],
                 SleepCard(today: today),

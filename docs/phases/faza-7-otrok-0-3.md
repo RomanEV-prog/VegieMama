@@ -1,6 +1,6 @@
 # Faza 7 – Otrok 0–3: profil, uvajanje hrane, prehrana malčka
 
-**Status: ⬜ ni začeta**
+**Status: ✅ končana (17. 7. 2026)**
 
 Razširitev v2: aplikacija spremlja otroka od rojstva do 3. leta. Pride po Fazi 6, ker potrebuje delujočo persistence (profil otroka mora preživeti restart).
 
@@ -12,28 +12,28 @@ Uporabnica z dojenčkom ali malčkom dobi enakovredno podporo kot nosečnica: pr
 
 ### Modeli in podatki
 
-* [ ] razširitev `BabyProfileModel`: allergies, notes, izpeljana `stage` (newborn / introducing / toddler)
-* [ ] nov `FoodIntroductionModel`: foodId, name, category, recommendedFromMonth, introduced, introducedAt, reaction, notes
-* [ ] vsebinska baza živil za uvajanje (mock/lokalni JSON): kategorije, priporočena starost, opombe za rastlinsko prehrano
-* [ ] razširitev `TrackingDataModel`: babyMeals, nutrientCoverage (B12, železo, cink, jod, omega-3, D, kalcij, beljakovine)
+* [x] razširitev `BabyProfileModel`: allergies, notes, izpeljana `stage` (newborn / introducing / toddler)
+* [x] nov `FoodIntroductionModel`: foodId, name, category, recommendedFromMonth, introduced, introducedAt, reaction, notes
+* [x] vsebinska baza živil za uvajanje (mock/lokalni JSON): kategorije, priporočena starost, opombe za rastlinsko prehrano
+* [x] razširitev `TrackingDataModel`: babyMeals, nutrientCoverage (B12, železo, cink, jod, omega-3, D, kalcij, beljakovine)
 
 ### Sloji
 
-* [ ] `BabyProvider` + `BabyRepository` + mock/local service
-* [ ] rute `/baby` in `/baby/food-guide` (izven shell-a, z back gumbom)
-* [ ] vstopne točke: kartica na Home + sekcija na Profilu (brez šestega zavihka)
+* [x] `BabyProvider` + `BabyRepository` + mock/local service
+* [x] rute `/baby` in `/baby/food-guide` (izven shell-a, z back gumbom)
+* [x] vstopne točke: kartica na Home + sekcija na Profilu (brez šestega zavihka)
 
 ### Zasloni (`screens/baby/`)
 
-* [ ] `BabyProfileScreen` — ime, starost (meseci/leta), faza, alergije, opombe
-* [ ] `FoodGuideScreen` — vodnik uvajanja hrane po starosti; seznam živil z označevanjem »uvedeno« in beleženjem reakcije
-* [ ] prikaz pokritosti ključnih nutrientov za malčka — nežno, informativno, nikoli alarmantno
+* [x] `BabyProfileScreen` — ime, starost (meseci/leta), faza, alergije, opombe
+* [x] `FoodGuideScreen` — vodnik uvajanja hrane po starosti; seznam živil z označevanjem »uvedeno« in beleženjem reakcije
+* [x] prikaz pokritosti ključnih nutrientov za malčka — nežno, informativno, nikoli alarmantno
 
 ### Prilagoditev obstoječih zaslonov
 
-* [ ] Home: poudarki glede na fazo otroka (uvajanje hrane pri ~6 mesecih, jedilniki za malčka)
-* [ ] Tracking: kartice za obroke otroka, ko je `userType` infant/toddler
-* [ ] Recepti: privzeti filter po starosti otroka
+* [x] Home: poudarki glede na fazo otroka (uvajanje hrane pri ~6 mesecih, jedilniki za malčka)
+* [x] Tracking: kartice za obroke otroka, ko je `userType` infant/toddler
+* [x] Recepti: privzeti filter po starosti otroka
 
 ## Vsebinska pravila
 

@@ -12,6 +12,7 @@ import '../../providers/user_provider.dart';
 import '../../widgets/motivational_banner.dart';
 import 'widgets/achievements_section.dart';
 import 'widgets/ai_assistants_section.dart';
+import 'widgets/baby_section.dart';
 import 'widgets/favorite_recipes_section.dart';
 import 'widgets/premium_status_card.dart';
 import 'widgets/profile_header.dart';
@@ -71,6 +72,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: AppSpacing.sm),
                 const TrackingSummary(),
+                const SizedBox(height: AppSpacing.lg),
+                const BabySection(),
                 const SizedBox(height: AppSpacing.lg),
                 const AchievementsSection(),
                 const SizedBox(height: AppSpacing.lg),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:veggiemama/app.dart';
+import 'package:veggiemama/screens/home/home_screen.dart';
 import 'package:veggiemama/models/user_model.dart';
 import 'package:veggiemama/providers/tracking_provider.dart';
 import 'package:veggiemama/services/repositories/user_repository.dart';
@@ -47,7 +48,7 @@ void main() {
     await tester.pump(const Duration(milliseconds: 400));
 
     // Redirect landed on Home.
-    expect(find.text('Domov – skoraj tu 🌿'), findsOneWidget);
+    expect(find.byType(HomeScreen), findsOneWidget);
 
     // User persisted with the chosen data.
     final stored =
@@ -67,7 +68,7 @@ void main() {
     await tester.pump();
 
     expect(find.text('Dobrodošla v VeggieMama'), findsNothing);
-    expect(find.text('Domov – skoraj tu 🌿'), findsOneWidget);
+    expect(find.byType(HomeScreen), findsOneWidget);
   });
 
   test('tracking mutations survive a provider restart', () async {

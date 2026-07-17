@@ -10,6 +10,8 @@ import '../screens/ai_assistant/ai_assistant_screen.dart';
 import '../screens/profile/profile_screen.dart';
 import '../screens/settings/settings_screen.dart';
 import '../screens/onboarding/onboarding_screen.dart';
+import '../screens/baby/baby_profile_screen.dart';
+import '../screens/baby/food_guide_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -45,6 +47,18 @@ GoRouter createAppRouter(UserProvider userProvider) {
         path: '/settings',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const SettingsScreen(),
+      ),
+
+      // Baby profile + food guide (outside shell, have back buttons)
+      GoRoute(
+        path: '/baby',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const BabyProfileScreen(),
+      ),
+      GoRoute(
+        path: '/baby/food-guide',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const FoodGuideScreen(),
       ),
 
       // Recipe detail (outside shell, has back button)

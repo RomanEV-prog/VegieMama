@@ -49,6 +49,19 @@ class RecipesProvider extends ChangeNotifier {
     }
   }
 
+  bool _defaultFilterApplied = false;
+
+  /// Pre-selects the filter matching the child's stage — only once per
+  /// session and only when the user hasn't picked anything herself.
+  void applyDefaultFilter(String? filterKey) {
+    if (_defaultFilterApplied || filterKey == null) return;
+    _defaultFilterApplied = true;
+    if (_activeFilters.isEmpty) {
+      _activeFilters.add(filterKey);
+      notifyListeners();
+    }
+  }
+
   void toggleFilter(String filter) {
     if (_activeFilters.contains(filter)) {
       _activeFilters.remove(filter);

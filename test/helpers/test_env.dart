@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:veggiemama/models/baby_profile_model.dart';
 import 'package:veggiemama/models/tracking_data_model.dart';
 import 'package:veggiemama/models/user_model.dart';
 import 'package:veggiemama/services/local/preferences_service.dart';
@@ -63,3 +64,7 @@ Future<void> seedToday(TrackingDataModel today) {
     today.toJson(),
   );
 }
+
+/// Seeds the stored baby profile.
+Future<void> seedBaby(BabyProfileModel baby) =>
+    StorageService.instance.save('user_box', 'baby_profile', baby.toJson());

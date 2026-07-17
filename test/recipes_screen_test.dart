@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:veggiemama/providers/recipes_provider.dart';
+import 'package:veggiemama/providers/user_provider.dart';
 import 'package:veggiemama/screens/recipes/recipe_detail_screen.dart';
 import 'package:veggiemama/screens/recipes/recipes_screen.dart';
 import 'helpers/test_env.dart';
@@ -19,8 +20,11 @@ Widget _buildApp({String initialLocation = '/recipes'}) {
       ),
     ],
   );
-  return ChangeNotifierProvider(
-    create: (_) => RecipesProvider()..loadRecipes(),
+  return MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => UserProvider()..loadUser()),
+      ChangeNotifierProvider(create: (_) => RecipesProvider()..loadRecipes()),
+    ],
     child: MaterialApp.router(routerConfig: router),
   );
 }

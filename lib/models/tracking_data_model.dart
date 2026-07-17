@@ -8,6 +8,12 @@ class TrackingDataModel {
   final int mealsLogged;
   final List<String> vitamins;
   final int breastfeedingSessions;
+
+  /// Child meals logged today (baby/toddler stages).
+  final int babyMeals;
+
+  /// Key nutrients covered in the toddler's meals today.
+  final List<String> nutrientCoverage;
   final String? notes;
 
   const TrackingDataModel({
@@ -20,6 +26,8 @@ class TrackingDataModel {
     this.mealsLogged = 0,
     this.vitamins = const [],
     this.breastfeedingSessions = 0,
+    this.babyMeals = 0,
+    this.nutrientCoverage = const [],
     this.notes,
   });
 
@@ -39,6 +47,8 @@ class TrackingDataModel {
     int? mealsLogged,
     List<String>? vitamins,
     int? breastfeedingSessions,
+    int? babyMeals,
+    List<String>? nutrientCoverage,
     String? notes,
   }) {
     return TrackingDataModel(
@@ -52,6 +62,8 @@ class TrackingDataModel {
       vitamins: vitamins ?? this.vitamins,
       breastfeedingSessions:
           breastfeedingSessions ?? this.breastfeedingSessions,
+      babyMeals: babyMeals ?? this.babyMeals,
+      nutrientCoverage: nutrientCoverage ?? this.nutrientCoverage,
       notes: notes ?? this.notes,
     );
   }
@@ -66,6 +78,8 @@ class TrackingDataModel {
         'mealsLogged': mealsLogged,
         'vitamins': vitamins,
         'breastfeedingSessions': breastfeedingSessions,
+        'babyMeals': babyMeals,
+        'nutrientCoverage': nutrientCoverage,
         'notes': notes,
       };
 
@@ -83,6 +97,11 @@ class TrackingDataModel {
                 .toList() ??
             [],
         breastfeedingSessions: json['breastfeedingSessions'] as int? ?? 0,
+        babyMeals: json['babyMeals'] as int? ?? 0,
+        nutrientCoverage: (json['nutrientCoverage'] as List<dynamic>?)
+                ?.map((e) => e as String)
+                .toList() ??
+            [],
         notes: json['notes'] as String?,
       );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'providers/baby_provider.dart';
 import 'providers/user_provider.dart';
 import 'providers/tracking_provider.dart';
 import 'providers/achievements_provider.dart';
@@ -35,6 +36,7 @@ class _VeggieMamaAppState extends State<VeggieMamaApp> {
         ChangeNotifierProvider(create: (_) => AchievementsProvider()..loadAchievements()),
         ChangeNotifierProvider(create: (_) => RecipesProvider()..loadRecipes()),
         ChangeNotifierProvider(create: (_) => AIChatProvider()..loadAssistants()),
+        ChangeNotifierProvider(create: (_) => BabyProvider()..load()),
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
         ChangeNotifierProxyProvider2<TrackingProvider, UserProvider,

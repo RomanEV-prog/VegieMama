@@ -76,4 +76,17 @@ class TrackingProvider extends ChangeNotifier {
 
   void logBreastfeeding() => _mutate(
       (t) => t.copyWith(breastfeedingSessions: t.breastfeedingSessions + 1));
+
+  void logBabyMeal() =>
+      _mutate((t) => t.copyWith(babyMeals: t.babyMeals + 1));
+
+  void toggleNutrient(String nutrient) => _mutate((t) {
+        final coverage = List<String>.from(t.nutrientCoverage);
+        if (coverage.contains(nutrient)) {
+          coverage.remove(nutrient);
+        } else {
+          coverage.add(nutrient);
+        }
+        return t.copyWith(nutrientCoverage: coverage);
+      });
 }
