@@ -18,13 +18,17 @@ flutter run -d emulator-5554 --release   # zagon na emulatorju
 ```
 
 Nikoli ne poganjaj dveh `flutter` ukazov hkrati (startup lock deadlock).
-Emulator recepti in pasti: `.claude/commands/flutter-android-emulator.md`.
-Testne pasti: `.claude/commands/flutter-widget-testi.md`.
+
+Projektni skilli v `.claude/commands/`:
+- `flutter-android-emulator` — adb recepti, zamrznitve, omrežje emulatorja
+- `flutter-widget-testi` — FakeAsync/Hive/provider pasti v testih
+- `flutter-gemini-klepet` — LLM klepet: vmesnik, .env asset, varnostna mreža
+- `flutter-l10n` — gen-l10n: obseg (UI ogrodje vs vsebina), testni delegati
 
 ## Trda pravila
 
 - Podatki v UI izključno prek providerjev (`context.watch`/`read`); mutacije prek repozitorijev.
-- Vsi uporabniški teksti nežni, brez obsojanja (glej design-guidelines §6–7); slovenščina je zaenkrat hardcodana (l10n pride v Fazi 8).
+- Vsi uporabniški teksti nežni, brez obsojanja (glej design-guidelines §6–7). UI ogrodje prek l10n (sl/en/de, context.l10n); vsebinski sloj (recepti, živila, empatična sporočila) je slovenski do v1.1.
 - Commit sporočila: `type(scope): summary` (male črke, ≤50 znakov).
 - Po vsaki zaključeni fazi: posodobi statuse v `docs/phases/` + `ARCHITECTURE.md`, commit, push.
 
