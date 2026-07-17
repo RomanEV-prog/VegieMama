@@ -187,4 +187,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get setAboutText =>
       'VeggieMama 1.0\n\nThis app offers support and does not replace advice from your doctor, pediatrician or other professional. All your data stays on this device.';
+
+  @override
+  String get aiDisclaimer =>
+      'Lina, Maja and Zala offer support and do not replace your doctor or pediatrician.';
+
+  @override
+  String get aiInputHint => 'Write a message...';
 }

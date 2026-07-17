@@ -186,4 +186,11 @@ class AppLocalizationsSl extends AppLocalizations {
   @override
   String get setAboutText =>
       'VeggieMama 1.0\n\nAplikacija je v podporo in ne nadomešča nasveta zdravnika, pediatra ali druge strokovne osebe. Vsi tvoji podatki ostanejo na tej napravi.';
+
+  @override
+  String get aiDisclaimer =>
+      'Lina, Maja in Zala so v podporo in ne nadomeščajo zdravnika ali pediatra.';
+
+  @override
+  String get aiInputHint => 'Napiši sporočilo...';
 }

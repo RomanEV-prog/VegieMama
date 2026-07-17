@@ -101,10 +101,10 @@ Kaj je narejeno:
 
 Kaj še ni narejeno:
 
-* ❌ AI zaslon je placeholder (Faza 5 preskočena na zahtevo),
+* ✅ AI klepet deluje na mocku z varnostnimi pravili; ločeni pogovori po pomočnicah,
 * ✅ persistence deluje (Hive za user/tracking/favorites, SharedPreferences za temo/jezik),
 * ✅ l10n: UI ogrodje v sl/en/de; vsebinski sloj (recepti, živila, empatija) namenoma sl do v1.1,
-* ❌ `services/remote/` ne obstaja, AI je mock,
+* ✅ `services/remote/` vmesnik pripravljen (AIService, ApiClient, RemoteAIService) — priklop backenda je ena vrstica,
 * ⚠️ testi pokrivajo Profil, Sledenje, Recepte, onboarding/persistenco in otroka 0–3,
 * ✅ app ikona in splash (generirana, brand barve); assets mape se polnijo po potrebi,
 * ✅ onboarding je vezan na začetni flow (router redirect).
@@ -353,7 +353,7 @@ Podroben načrt vsake faze je v `docs/phases/faza-N-*.md`. Povzetek:
 | 2 | Profile vertical slice | ✅ končana |
 | 3 | Tracking vertical slice | ✅ končana |
 | 4 | Recipes vertical slice | ✅ končana |
-| 5 | AI vertical slice | ⏸️ preskočena |
+| 5 | AI vertical slice | ✅ končana |
 | 6 | Onboarding + persistence | ✅ končana |
 | 7 | Otrok 0–3: profil otroka, uvajanje hrane, prehrana malčka | ✅ končana |
 | 8 | Polish: l10n, testi, dosežki, priprava na izdajo | ✅ končana |

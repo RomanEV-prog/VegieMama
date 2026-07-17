@@ -62,5 +62,8 @@
   "setDeleteSubtitle": "Profil, Einträge und Lieblingsrezepte werden von diesem Gerät gelöscht.",
   "setDeleteConfirmTitle": "Deine Daten löschen?",
   "setDeleteConfirmBody": "Profil, tägliche Einträge und Lieblingsrezepte werden gelöscht. Das kann nicht rückgängig gemacht werden.",
-  "setAboutText": "VeggieMama 1.0\n\nDiese App bietet Unterstützung und ersetzt nicht den Rat von Arzt, Kinderarzt oder anderen Fachpersonen. Alle deine Daten bleiben auf diesem Gerät."
+  "setAboutText": "VeggieMama 1.0\n\nDiese App bietet Unterstützung und ersetzt nicht den Rat von Arzt, Kinderarzt oder anderen Fachpersonen. Alle deine Daten bleiben auf diesem Gerät.",
+
+  "aiDisclaimer": "Lina, Maja und Zala bieten Unterstützung und ersetzen nicht Arzt oder Kinderarzt.",
+  "aiInputHint": "Nachricht schreiben..."
 }

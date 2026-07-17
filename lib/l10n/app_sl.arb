@@ -62,5 +62,8 @@
   "setDeleteSubtitle": "Profil, vnosi in najljubši recepti se izbrišejo s te naprave.",
   "setDeleteConfirmTitle": "Izbrišem tvoje podatke?",
   "setDeleteConfirmBody": "Izbrisalo bo profil, dnevne vnose in najljubše recepte. Tega ni mogoče razveljaviti.",
-  "setAboutText": "VeggieMama 1.0\n\nAplikacija je v podporo in ne nadomešča nasveta zdravnika, pediatra ali druge strokovne osebe. Vsi tvoji podatki ostanejo na tej napravi."
+  "setAboutText": "VeggieMama 1.0\n\nAplikacija je v podporo in ne nadomešča nasveta zdravnika, pediatra ali druge strokovne osebe. Vsi tvoji podatki ostanejo na tej napravi.",
+
+  "aiDisclaimer": "Lina, Maja in Zala so v podporo in ne nadomeščajo zdravnika ali pediatra.",
+  "aiInputHint": "Napiši sporočilo..."
 }

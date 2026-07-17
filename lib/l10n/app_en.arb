@@ -62,5 +62,8 @@
   "setDeleteSubtitle": "Your profile, entries and favorite recipes will be removed from this device.",
   "setDeleteConfirmTitle": "Delete your data?",
   "setDeleteConfirmBody": "This will delete your profile, daily entries and favorite recipes. This cannot be undone.",
-  "setAboutText": "VeggieMama 1.0\n\nThis app offers support and does not replace advice from your doctor, pediatrician or other professional. All your data stays on this device."
+  "setAboutText": "VeggieMama 1.0\n\nThis app offers support and does not replace advice from your doctor, pediatrician or other professional. All your data stays on this device.",
+
+  "aiDisclaimer": "Lina, Maja and Zala offer support and do not replace your doctor or pediatrician.",
+  "aiInputHint": "Write a message..."
 }

@@ -441,6 +441,18 @@ abstract class AppLocalizations {
   /// In sl, this message translates to:
   /// **'VeggieMama 1.0\n\nAplikacija je v podporo in ne nadomešča nasveta zdravnika, pediatra ali druge strokovne osebe. Vsi tvoji podatki ostanejo na tej napravi.'**
   String get setAboutText;
+
+  /// No description provided for @aiDisclaimer.
+  ///
+  /// In sl, this message translates to:
+  /// **'Lina, Maja in Zala so v podporo in ne nadomeščajo zdravnika ali pediatra.'**
+  String get aiDisclaimer;
+
+  /// No description provided for @aiInputHint.
+  ///
+  /// In sl, this message translates to:
+  /// **'Napiši sporočilo...'**
+  String get aiInputHint;
 }
 
 class _AppLocalizationsDelegate
