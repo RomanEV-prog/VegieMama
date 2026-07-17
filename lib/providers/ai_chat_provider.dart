@@ -60,6 +60,8 @@ class AIChatProvider extends ChangeNotifier {
     final trimmed = text.trim();
     if (assistantId == null || trimmed.isEmpty || _isSending) return;
 
+    final history =
+        List<ChatMessage>.of(_conversations[assistantId] ?? const []);
     _conversations.putIfAbsent(assistantId, () => []).add(ChatMessage(
           role: ChatRole.user,
           content: trimmed,
@@ -71,7 +73,8 @@ class AIChatProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final reply = await _repository.sendMessage(assistantId, trimmed);
+      final reply = await _repository.sendMessage(assistantId, trimmed,
+          history: history);
       _conversations[assistantId]!.add(ChatMessage(
         role: ChatRole.assistant,
         content: reply,

@@ -1,4 +1,6 @@
 import '../../models/ai_assistant_model.dart';
+import '../../models/chat_message_model.dart';
+import '../ai_safety.dart';
 import '../remote/ai_service.dart';
 
 /// Mock AI backend: gentle, keyword-based answers per assistant.
@@ -33,18 +35,6 @@ class MockAIService implements AIService {
       ),
     ];
   }
-
-  static const _safetyKeywords = [
-    'boli', 'bolečin', 'krvav', 'vročin', 'zdravil', 'tablet', 'izpuščaj',
-    'bruha', 'driska', 'omedl', 'vrtoglav', 'krč', 'urgenc', 'antibiotik',
-    'depresi', 'ne zmorem več', 'samomor',
-  ];
-
-  static const String _safetyResponse =
-      'Hvala, da si mi zaupala. Pri zdravstvenih težavah ti jaz ne smem '
-      'in ne morem svetovati — prosim, obrni se na svojega zdravnika, '
-      'ginekologa ali pediatra, pri nujnih stvareh pa na 112. '
-      'Tvoje zdravje je vedno na prvem mestu 💚';
 
   static const Map<String, Map<String, String>> _byAssistant = {
     'ai_nutrition': {
@@ -131,14 +121,16 @@ class MockAIService implements AIService {
   int _fallbackIndex = 0;
 
   @override
-  Future<String> sendMessage(String assistantId, String message) async {
+  Future<String> sendMessage(
+    String assistantId,
+    String message, {
+    List<ChatMessage> history = const [],
+  }) async {
     await Future.delayed(const Duration(milliseconds: 800));
     final lower = message.toLowerCase();
 
     // Safety net always wins.
-    for (final keyword in _safetyKeywords) {
-      if (lower.contains(keyword)) return _safetyResponse;
-    }
+    if (AISafety.isMedical(message)) return AISafety.response;
 
     final responses = _byAssistant[assistantId] ?? const {};
     for (final entry in responses.entries) {

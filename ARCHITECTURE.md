@@ -101,7 +101,7 @@ Kaj je narejeno:
 
 Kaj še ni narejeno:
 
-* ✅ AI klepet deluje na mocku z varnostnimi pravili; ločeni pogovori po pomočnicah,
+* ✅ AI klepet na pravem modelu (Gemini, gemini-flash-latest) z deterministično varnostno mrežo; mock fallback brez ključa,
 * ✅ persistence deluje (Hive za user/tracking/favorites, SharedPreferences za temo/jezik),
 * ✅ l10n: UI ogrodje v sl/en/de; vsebinski sloj (recepti, živila, empatija) namenoma sl do v1.1,
 * ✅ `services/remote/` vmesnik pripravljen (AIService, ApiClient, RemoteAIService) — priklop backenda je ena vrstica,

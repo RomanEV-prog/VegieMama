@@ -1,5 +1,6 @@
 import '../../core/errors/app_exception.dart';
 import '../../models/ai_assistant_model.dart';
+import '../../models/chat_message_model.dart';
 import 'ai_service.dart';
 import 'api_client.dart';
 
@@ -21,7 +22,11 @@ class RemoteAIService implements AIService {
   }
 
   @override
-  Future<String> sendMessage(String assistantId, String message) async {
+  Future<String> sendMessage(
+    String assistantId,
+    String message, {
+    List<ChatMessage> history = const [],
+  }) async {
     if (ApiClient.baseUrl.isEmpty) {
       throw const NetworkException('AI backend ni konfiguriran.');
     }

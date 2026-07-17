@@ -27,3 +27,8 @@ Testne pasti: `.claude/commands/flutter-widget-testi.md`.
 - Vsi uporabniški teksti nežni, brez obsojanja (glej design-guidelines §6–7); slovenščina je zaenkrat hardcodana (l10n pride v Fazi 8).
 - Commit sporočila: `type(scope): summary` (male črke, ≤50 znakov).
 - Po vsaki zaključeni fazi: posodobi statuse v `docs/phases/` + `ARCHITECTURE.md`, commit, push.
+
+## AI klepet (Gemini)
+
+- Pravi AI teče prek Gemini API (`gemini-flash-latest` alias — NIKOLI konkretnih imen modelov, glej gotchas v greenheart skillu gemini-api). Ključ: `.env` v korenu (`GEMINI_API_KEY=...`, gitignoriran, bundlan kot asset — glej `.env.example`). **Brez `.env` build pade** (pubspec asset) — ustvari ga iz .env.example.
+- Brez ključa (prazen .env) aplikacija samodejno pade nazaj na mock. Testi vedno tečejo na mocku.

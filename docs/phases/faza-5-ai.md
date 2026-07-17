@@ -35,3 +35,4 @@ Klepetalni zaslon z nežnim AI pomočnikom — najprej v celoti na mock odgovori
 * **Vsaka pomočnica ima ločen pogovor** — preklop med Lino, Majo in Zalo ohrani kontekst.
 * **Varnostna pravila v mocku:** zdravstvene ključne besede (bolečina, krvavitev, zdravila, izpuščaj ...) vedno sprožijo preusmeritev k zdravniku/112; AI nikoli ne diagnosticira.
 * `services/remote/`: `AIService` vmesnik + `ApiClient` (Dio) + `RemoteAIService` skelet — priklop pravega backenda je ena vrstica v `AIRepository`, brez sprememb v UI/providerju.
+* **Nadgradnja (17. 7. 2026):** klepet zdaj teče na pravem modelu prek Gemini API (`gemini-flash-latest`, recepti in pasti iz greenheart skilla `gemini-api`): sistemske persone za Lino/Majo/Zalo, zgodovina pogovora (zadnjih 12 sporočil), maxOutputTokens 2048, retry na 503. Deterministična varnostna mreža (AISafety) prestreže zdravstvena vprašanja PRED klicem modela. Ključ v `.env` (gitignoriran); brez ključa mock fallback.
