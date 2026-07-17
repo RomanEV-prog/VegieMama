@@ -61,3 +61,17 @@ flutter run -d emulator-5554 --release   # v ozadju; kill procesa NE odstrani ap
   emulator že teče — najprej preveri `flutter devices`.
 - `flutter run --release` ostane pripet na terminal; prekinitev procesa ne
   odstrani aplikacije (release build teče naprej samostojno).
+
+## Dopolnitev (seja 17. 7. 2026 — omrežje emulatorja)
+
+- **`ping` na emulatorju je NEUPORABEN test** — SLIRP omrežje pogosto blokira
+  ICMP, TCP pa dela. Pravi test:
+  `"$ADB" shell "toybox nc -w 5 <host> 443 </dev/null && echo TCP_OK"`.
+- **Omrežje emulatorja občasno odmre** (connectionTimeout v aplikaciji,
+  TCP_FAIL) — popravi brez restarta:
+  `"$ADB" shell "svc wifi disable"; sleep 2; "$ADB" shell "svc wifi enable"`.
+  Če ne pomaga: zaženi emulator z `-dns-server 8.8.8.8,1.1.1.1`.
+- **Release build NIMA INTERNET dovoljenja** — debug/profile manifest ga
+  dodata samodejno, `src/main/AndroidManifest.xml` pa ne. Simptom: vsi
+  HTTP klici padejo SAMO v release buildu. Dodaj:
+  `<uses-permission android:name="android.permission.INTERNET"/>`.

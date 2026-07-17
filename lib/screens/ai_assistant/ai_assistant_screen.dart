@@ -113,12 +113,32 @@ class _AIAssistantScreenState extends State<AIAssistantScreen> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Text(
-                          'Sporočilo ni prišlo skozi. Brez skrbi 💚',
-                          style:
-                              Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    color: AppColors.textSecondary,
-                                  ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Sporočilo ni prišlo skozi. Brez skrbi 💚',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(color: AppColors.textSecondary),
+                            ),
+                            if (provider.error != null)
+                              // Tiny technical cause — release builds are
+                              // otherwise blind (gemini-api skill gotcha).
+                              Text(
+                                provider.error!,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(
+                                      fontSize: 10,
+                                      color: AppColors.textLight,
+                                    ),
+                              ),
+                          ],
                         ),
                       ),
                       TextButton(

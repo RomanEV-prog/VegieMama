@@ -25,6 +25,9 @@ class GeminiAIService implements AIService {
   final MockAIService _catalogue = MockAIService();
 
   static const _commonRules =
+      'Piši navadno besedilo BREZ markdown oznak (brez **, *, #, alinej '
+      'z zvezdicami) — aplikacija prikazuje golo besedilo. Sezname piši '
+      'kot kratke stavke ali z vezaji. '
       'Odgovarjaj v jeziku zadnjega sporočila (privzeto v slovenščini). '
       'Bodi topla, pomirjujoča in konkretna; do ~120 besed; brez '
       'obsojanja in brez tekmovalnosti; zmerno uporabljaj emojije. '
