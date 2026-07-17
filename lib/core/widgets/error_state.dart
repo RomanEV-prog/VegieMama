@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../errors/error_handler.dart';
+import '../helpers/l10n_ext.dart';
 
 /// Error state widget with gentle messaging and retry option
 class ErrorState extends StatelessWidget {
@@ -37,7 +38,7 @@ class ErrorState extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: onRetry,
                 icon: const Icon(Icons.refresh),
-                label: const Text('Poskusi znova'),
+                label: Text(context.l10n.commonRetry),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.mintGreen,
                   foregroundColor: Colors.white,

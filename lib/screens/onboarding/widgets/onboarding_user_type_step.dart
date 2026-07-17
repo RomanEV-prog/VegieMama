@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_radius.dart';
+import '../../../core/helpers/l10n_ext.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../models/user_model.dart';
 
@@ -13,29 +14,32 @@ class OnboardingUserTypeStep extends StatelessWidget {
     required this.onChanged,
   });
 
-  static const _options = [
-    (UserType.pregnant, '🤰', 'Nosečnica', 'Pričakujem otroka'),
-    (UserType.postpartum, '🌸', 'Po porodu', 'Okrevam in se privajam'),
-    (UserType.babyMom, '🍼', 'Mamica z dojenčkom', 'Otrok do 1. leta'),
-    (UserType.toddlerMom, '🧸', 'Mamica z malčkom', 'Otrok od 1 do 3 let'),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final options = [
+      (UserType.pregnant, '🤰', context.l10n.onbTypePregnant,
+          context.l10n.onbTypePregnantSub),
+      (UserType.postpartum, '🌸', context.l10n.onbTypePostpartum,
+          context.l10n.onbTypePostpartumSub),
+      (UserType.babyMom, '🍼', context.l10n.onbTypeBaby,
+          context.l10n.onbTypeBabySub),
+      (UserType.toddlerMom, '🧸', context.l10n.onbTypeToddler,
+          context.l10n.onbTypeToddlerSub),
+    ];
     return ListView(
       padding: const EdgeInsets.all(AppSpacing.xl),
       children: [
         Text(
-          'Kje na poti si?',
+          context.l10n.onbTypeTitle,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: AppSpacing.sm),
         Text(
-          'Aplikacijo prilagodim tvojemu obdobju. Kadar koli lahko to spremeniš.',
+          context.l10n.onbTypeSubtitle,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         const SizedBox(height: AppSpacing.xl),
-        for (final (type, emoji, title, subtitle) in _options)
+        for (final (type, emoji, title, subtitle) in options)
           Padding(
             padding: const EdgeInsets.only(bottom: AppSpacing.md),
             child: InkWell(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_spacing.dart';
+import '../../core/helpers/l10n_ext.dart';
 import '../../core/widgets/veggie_mama_app_bar.dart';
 import '../../providers/locale_provider.dart';
 import '../../providers/theme_provider.dart';
@@ -17,20 +18,17 @@ class SettingsScreen extends StatelessWidget {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Izbrišem tvoje podatke?'),
-        content: const Text(
-          'Izbrisalo bo profil, dnevne vnose in najljubše recepte. '
-          'Tega ni mogoče razveljaviti.',
-        ),
+        title: Text(dialogContext.l10n.setDeleteConfirmTitle),
+        content: Text(dialogContext.l10n.setDeleteConfirmBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(false),
-            child: const Text('Prekliči'),
+            child: Text(dialogContext.l10n.commonCancel),
           ),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: AppColors.error),
             onPressed: () => Navigator.of(dialogContext).pop(true),
-            child: const Text('Izbriši'),
+            child: Text(dialogContext.l10n.commonDelete),
           ),
         ],
       ),
@@ -48,14 +46,14 @@ class SettingsScreen extends StatelessWidget {
     }
   }
 
-  String _themeLabel(ThemeMode mode) {
+  String _themeLabel(BuildContext context, ThemeMode mode) {
     switch (mode) {
       case ThemeMode.light:
-        return 'Svetla';
+        return context.l10n.themeLight;
       case ThemeMode.dark:
-        return 'Temna';
+        return context.l10n.themeDark;
       case ThemeMode.system:
-        return 'Sistemska';
+        return context.l10n.themeSystem;
     }
   }
 
@@ -65,11 +63,12 @@ class SettingsScreen extends StatelessWidget {
     final localeProvider = context.watch<LocaleProvider>();
 
     return Scaffold(
-      appBar: const VeggieMamaAppBar(title: 'Nastavitve', showBack: true),
+      appBar:
+          VeggieMamaAppBar(title: context.l10n.titleSettings, showBack: true),
       body: ListView(
         padding: const EdgeInsets.only(bottom: AppSpacing.xl),
         children: [
-          const SectionTitle(title: 'Videz'),
+          SectionTitle(title: context.l10n.setAppearance),
           Card(
             margin: const EdgeInsets.symmetric(
               horizontal: AppSpacing.screenPadding,
@@ -78,7 +77,7 @@ class SettingsScreen extends StatelessWidget {
               children: [
                 for (final mode in ThemeMode.values)
                   RadioListTile<ThemeMode>(
-                    title: Text(_themeLabel(mode)),
+                    title: Text(_themeLabel(context, mode)),
                     value: mode,
                     groupValue: themeProvider.themeMode,
                     onChanged: (value) {
@@ -91,7 +90,7 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
 
-          const SectionTitle(title: 'Jezik'),
+          SectionTitle(title: context.l10n.language),
           Card(
             margin: const EdgeInsets.symmetric(
               horizontal: AppSpacing.screenPadding,
@@ -117,23 +116,23 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
 
-          const SectionTitle(title: 'Zasebnost'),
+          SectionTitle(title: context.l10n.setPrivacy),
           Card(
             margin: const EdgeInsets.symmetric(
               horizontal: AppSpacing.screenPadding,
             ),
             child: ListTile(
               leading: const Icon(Icons.delete_outline, color: AppColors.error),
-              title: const Text('Izbriši moje podatke'),
+              title: Text(context.l10n.setDeleteData),
               subtitle: Text(
-                'Profil, vnosi in najljubši recepti se izbrišejo s te naprave.',
+                context.l10n.setDeleteSubtitle,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               onTap: () => _confirmDeleteData(context),
             ),
           ),
 
-          const SectionTitle(title: 'O aplikaciji'),
+          SectionTitle(title: context.l10n.setAbout),
           Card(
             margin: const EdgeInsets.symmetric(
               horizontal: AppSpacing.screenPadding,
@@ -141,10 +140,7 @@ class SettingsScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(AppSpacing.cardPadding),
               child: Text(
-                'VeggieMama 1.0\n\n'
-                'Aplikacija je v podporo in ne nadomešča nasveta zdravnika, '
-                'pediatra ali druge strokovne osebe. Vsi tvoji podatki '
-                'ostanejo na tej napravi.',
+                context.l10n.setAboutText,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.textSecondary,
                     ),

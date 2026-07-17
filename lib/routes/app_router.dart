@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../core/constants/app_colors.dart';
+import '../core/helpers/l10n_ext.dart';
 import '../providers/user_provider.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/tracking/tracking_screen.dart';
@@ -123,12 +124,12 @@ class _ShellScaffold extends StatelessWidget {
         onTap: (index) => context.go(_tabs[index]),
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.mintGreen,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), activeIcon: Icon(Icons.home), label: 'Domov'),
-          BottomNavigationBarItem(icon: Icon(Icons.show_chart_outlined), activeIcon: Icon(Icons.show_chart), label: 'Sledenje'),
-          BottomNavigationBarItem(icon: Icon(Icons.restaurant_outlined), activeIcon: Icon(Icons.restaurant), label: 'Recepti'),
-          BottomNavigationBarItem(icon: Icon(Icons.smart_toy_outlined), activeIcon: Icon(Icons.smart_toy), label: 'AI'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), activeIcon: Icon(Icons.person), label: 'Profil'),
+        items: [
+          BottomNavigationBarItem(icon: const Icon(Icons.home_outlined), activeIcon: const Icon(Icons.home), label: context.l10n.navHome),
+          BottomNavigationBarItem(icon: const Icon(Icons.show_chart_outlined), activeIcon: const Icon(Icons.show_chart), label: context.l10n.navTracking),
+          BottomNavigationBarItem(icon: const Icon(Icons.restaurant_outlined), activeIcon: const Icon(Icons.restaurant), label: context.l10n.navRecipes),
+          BottomNavigationBarItem(icon: const Icon(Icons.smart_toy_outlined), activeIcon: const Icon(Icons.smart_toy), label: context.l10n.navAI),
+          BottomNavigationBarItem(icon: const Icon(Icons.person_outline), activeIcon: const Icon(Icons.person), label: context.l10n.navProfile),
         ],
       ),
     );

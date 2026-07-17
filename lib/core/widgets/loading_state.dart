@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
+import '../helpers/l10n_ext.dart';
 
 /// Loading state widget with gentle messaging
 class LoadingState extends StatelessWidget {
-  final String message;
+  final String? message;
 
   const LoadingState({
     super.key,
-    this.message = 'Nalaganje...',
+    this.message,
   });
 
   @override
@@ -21,7 +22,7 @@ class LoadingState extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            message,
+            message ?? context.l10n.commonLoading,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],

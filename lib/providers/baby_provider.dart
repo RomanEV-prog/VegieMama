@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import '../models/baby_profile_model.dart';
 import '../models/food_introduction_model.dart';
+import '../services/local/achievements_service.dart';
 import '../services/repositories/baby_repository.dart';
 
 class BabyProvider extends ChangeNotifier {
@@ -98,5 +99,7 @@ class BabyProvider extends ChangeNotifier {
     _repository.saveFoodProgress(_foodGuide).catchError((Object e) {
       _error = e.toString();
     });
+    AchievementsService.instance
+        .setCount('foods_introduced', introducedCount);
   }
 }

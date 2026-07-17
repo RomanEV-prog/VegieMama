@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
+import 'package:veggiemama/l10n/app_localizations.dart';
 import 'package:veggiemama/providers/tracking_provider.dart';
 import 'package:veggiemama/providers/user_provider.dart';
 import 'package:veggiemama/screens/tracking/tracking_screen.dart';
@@ -12,7 +13,12 @@ Widget _buildTracking() {
       ChangeNotifierProvider(create: (_) => UserProvider()..loadUser()),
       ChangeNotifierProvider(create: (_) => TrackingProvider()..loadTodayData()),
     ],
-    child: const MaterialApp(home: TrackingScreen()),
+    child: const MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale('sl'),
+      home: TrackingScreen(),
+    ),
   );
 }
 

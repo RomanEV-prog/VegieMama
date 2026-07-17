@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
+import 'package:veggiemama/l10n/app_localizations.dart';
 import 'package:veggiemama/models/baby_profile_model.dart';
 import 'package:veggiemama/models/user_model.dart';
 import 'package:veggiemama/providers/baby_provider.dart';
@@ -20,7 +21,12 @@ Widget _wrap(Widget screen) {
       ChangeNotifierProvider(create: (_) => UserProvider()..loadUser()),
       ChangeNotifierProvider(create: (_) => BabyProvider()..load()),
     ],
-    child: MaterialApp(home: screen),
+    child: MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale('sl'),
+      home: screen,
+    ),
   );
 }
 

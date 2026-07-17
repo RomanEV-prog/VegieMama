@@ -136,65 +136,311 @@ abstract class AppLocalizations {
   /// **'Profil'**
   String get navProfile;
 
-  /// No description provided for @loading.
+  /// No description provided for @commonNext.
   ///
   /// In sl, this message translates to:
-  /// **'Nalaganje...'**
-  String get loading;
+  /// **'Naprej'**
+  String get commonNext;
 
-  /// No description provided for @error.
+  /// No description provided for @commonSkip.
   ///
   /// In sl, this message translates to:
-  /// **'Prišlo je do težave'**
-  String get error;
+  /// **'Preskoči'**
+  String get commonSkip;
 
-  /// No description provided for @retry.
+  /// No description provided for @commonFinish.
+  ///
+  /// In sl, this message translates to:
+  /// **'Konči'**
+  String get commonFinish;
+
+  /// No description provided for @commonStart.
+  ///
+  /// In sl, this message translates to:
+  /// **'Začniva 🌿'**
+  String get commonStart;
+
+  /// No description provided for @commonCancel.
+  ///
+  /// In sl, this message translates to:
+  /// **'Prekliči'**
+  String get commonCancel;
+
+  /// No description provided for @commonSave.
+  ///
+  /// In sl, this message translates to:
+  /// **'Shrani'**
+  String get commonSave;
+
+  /// No description provided for @commonDelete.
+  ///
+  /// In sl, this message translates to:
+  /// **'Izbriši'**
+  String get commonDelete;
+
+  /// No description provided for @commonRetry.
   ///
   /// In sl, this message translates to:
   /// **'Poskusi znova'**
-  String get retry;
+  String get commonRetry;
 
-  /// No description provided for @profile.
+  /// No description provided for @commonLoading.
   ///
   /// In sl, this message translates to:
-  /// **'Profil'**
-  String get profile;
+  /// **'Samo trenutek... 🌿'**
+  String get commonLoading;
 
-  /// No description provided for @settings.
+  /// No description provided for @commonEmpty.
+  ///
+  /// In sl, this message translates to:
+  /// **'Tukaj še ni ničesar – in to je povsem ok 💚'**
+  String get commonEmpty;
+
+  /// No description provided for @titleSettings.
   ///
   /// In sl, this message translates to:
   /// **'Nastavitve'**
-  String get settings;
+  String get titleSettings;
 
-  /// No description provided for @premiumStatus.
+  /// No description provided for @titleRecipe.
   ///
   /// In sl, this message translates to:
-  /// **'Premium status'**
-  String get premiumStatus;
+  /// **'Recept'**
+  String get titleRecipe;
 
-  /// No description provided for @achievements.
+  /// No description provided for @titleAI.
   ///
   /// In sl, this message translates to:
-  /// **'Dosežki'**
-  String get achievements;
+  /// **'AI Pomočnik'**
+  String get titleAI;
 
-  /// No description provided for @favoriteRecipes.
+  /// No description provided for @titleBaby.
   ///
   /// In sl, this message translates to:
-  /// **'Najljubši recepti'**
-  String get favoriteRecipes;
+  /// **'Tvoj otrok'**
+  String get titleBaby;
 
-  /// No description provided for @aiAssistants.
+  /// No description provided for @titleFoodGuide.
   ///
   /// In sl, this message translates to:
-  /// **'AI asistenti'**
-  String get aiAssistants;
+  /// **'Uvajanje hrane'**
+  String get titleFoodGuide;
 
-  /// No description provided for @trackingSummary.
+  /// No description provided for @onbWelcomeTitle.
   ///
   /// In sl, this message translates to:
-  /// **'Povzetek sledenja'**
-  String get trackingSummary;
+  /// **'Dobrodošla v VeggieMama'**
+  String get onbWelcomeTitle;
+
+  /// No description provided for @onbWelcomeBody.
+  ///
+  /// In sl, this message translates to:
+  /// **'Tvoja nežna spremljevalka na rastlinski poti — od nosečnosti do malčkovih prvih let.\n\nBrez pritiska, brez ocenjevanja. Samo podpora.'**
+  String get onbWelcomeBody;
+
+  /// No description provided for @onbTypeTitle.
+  ///
+  /// In sl, this message translates to:
+  /// **'Kje na poti si?'**
+  String get onbTypeTitle;
+
+  /// No description provided for @onbTypeSubtitle.
+  ///
+  /// In sl, this message translates to:
+  /// **'Aplikacijo prilagodim tvojemu obdobju. Kadar koli lahko to spremeniš.'**
+  String get onbTypeSubtitle;
+
+  /// No description provided for @onbTypePregnant.
+  ///
+  /// In sl, this message translates to:
+  /// **'Nosečnica'**
+  String get onbTypePregnant;
+
+  /// No description provided for @onbTypePregnantSub.
+  ///
+  /// In sl, this message translates to:
+  /// **'Pričakujem otroka'**
+  String get onbTypePregnantSub;
+
+  /// No description provided for @onbTypePostpartum.
+  ///
+  /// In sl, this message translates to:
+  /// **'Po porodu'**
+  String get onbTypePostpartum;
+
+  /// No description provided for @onbTypePostpartumSub.
+  ///
+  /// In sl, this message translates to:
+  /// **'Okrevam in se privajam'**
+  String get onbTypePostpartumSub;
+
+  /// No description provided for @onbTypeBaby.
+  ///
+  /// In sl, this message translates to:
+  /// **'Mamica z dojenčkom'**
+  String get onbTypeBaby;
+
+  /// No description provided for @onbTypeBabySub.
+  ///
+  /// In sl, this message translates to:
+  /// **'Otrok do 1. leta'**
+  String get onbTypeBabySub;
+
+  /// No description provided for @onbTypeToddler.
+  ///
+  /// In sl, this message translates to:
+  /// **'Mamica z malčkom'**
+  String get onbTypeToddler;
+
+  /// No description provided for @onbTypeToddlerSub.
+  ///
+  /// In sl, this message translates to:
+  /// **'Otrok od 1 do 3 let'**
+  String get onbTypeToddlerSub;
+
+  /// No description provided for @onbBasicsTitle.
+  ///
+  /// In sl, this message translates to:
+  /// **'Malo o tebi'**
+  String get onbBasicsTitle;
+
+  /// No description provided for @onbBasicsSubtitle.
+  ///
+  /// In sl, this message translates to:
+  /// **'Vse je neobvezno — deli samo, kar želiš.'**
+  String get onbBasicsSubtitle;
+
+  /// No description provided for @onbNameLabel.
+  ///
+  /// In sl, this message translates to:
+  /// **'Tvoje ime'**
+  String get onbNameLabel;
+
+  /// No description provided for @onbNameHint.
+  ///
+  /// In sl, this message translates to:
+  /// **'Kako naj te kličem?'**
+  String get onbNameHint;
+
+  /// No description provided for @onbDueDate.
+  ///
+  /// In sl, this message translates to:
+  /// **'Predviden datum poroda (PDP)'**
+  String get onbDueDate;
+
+  /// No description provided for @onbBirthDate.
+  ///
+  /// In sl, this message translates to:
+  /// **'Datum rojstva otroka'**
+  String get onbBirthDate;
+
+  /// No description provided for @onbPickDate.
+  ///
+  /// In sl, this message translates to:
+  /// **'Izberi datum'**
+  String get onbPickDate;
+
+  /// No description provided for @onbDateHelpPregnant.
+  ///
+  /// In sl, this message translates to:
+  /// **'Z njim izračunam teden nosečnosti in prilagodim vsebine.'**
+  String get onbDateHelpPregnant;
+
+  /// No description provided for @onbDateHelpChild.
+  ///
+  /// In sl, this message translates to:
+  /// **'Z njim izračunam starost otroka in prilagodim vsebine.'**
+  String get onbDateHelpChild;
+
+  /// No description provided for @onbSettingsTitle.
+  ///
+  /// In sl, this message translates to:
+  /// **'Še zadnji dotik'**
+  String get onbSettingsTitle;
+
+  /// No description provided for @onbSettingsSubtitle.
+  ///
+  /// In sl, this message translates to:
+  /// **'Izberi jezik in videz. Oboje lahko kadar koli spremeniš v nastavitvah.'**
+  String get onbSettingsSubtitle;
+
+  /// No description provided for @language.
+  ///
+  /// In sl, this message translates to:
+  /// **'Jezik'**
+  String get language;
+
+  /// No description provided for @theme.
+  ///
+  /// In sl, this message translates to:
+  /// **'Tema'**
+  String get theme;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In sl, this message translates to:
+  /// **'Svetla'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In sl, this message translates to:
+  /// **'Temna'**
+  String get themeDark;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In sl, this message translates to:
+  /// **'Sistemska'**
+  String get themeSystem;
+
+  /// No description provided for @setAppearance.
+  ///
+  /// In sl, this message translates to:
+  /// **'Videz'**
+  String get setAppearance;
+
+  /// No description provided for @setPrivacy.
+  ///
+  /// In sl, this message translates to:
+  /// **'Zasebnost'**
+  String get setPrivacy;
+
+  /// No description provided for @setAbout.
+  ///
+  /// In sl, this message translates to:
+  /// **'O aplikaciji'**
+  String get setAbout;
+
+  /// No description provided for @setDeleteData.
+  ///
+  /// In sl, this message translates to:
+  /// **'Izbriši moje podatke'**
+  String get setDeleteData;
+
+  /// No description provided for @setDeleteSubtitle.
+  ///
+  /// In sl, this message translates to:
+  /// **'Profil, vnosi in najljubši recepti se izbrišejo s te naprave.'**
+  String get setDeleteSubtitle;
+
+  /// No description provided for @setDeleteConfirmTitle.
+  ///
+  /// In sl, this message translates to:
+  /// **'Izbrišem tvoje podatke?'**
+  String get setDeleteConfirmTitle;
+
+  /// No description provided for @setDeleteConfirmBody.
+  ///
+  /// In sl, this message translates to:
+  /// **'Izbrisalo bo profil, dnevne vnose in najljubše recepte. Tega ni mogoče razveljaviti.'**
+  String get setDeleteConfirmBody;
+
+  /// No description provided for @setAboutText.
+  ///
+  /// In sl, this message translates to:
+  /// **'VeggieMama 1.0\n\nAplikacija je v podporo in ne nadomešča nasveta zdravnika, pediatra ali druge strokovne osebe. Vsi tvoji podatki ostanejo na tej napravi.'**
+  String get setAboutText;
 }
 
 class _AppLocalizationsDelegate

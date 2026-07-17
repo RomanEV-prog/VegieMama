@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
+import 'package:veggiemama/l10n/app_localizations.dart';
 import 'package:veggiemama/providers/achievements_provider.dart';
 import 'package:veggiemama/providers/ai_chat_provider.dart';
+import 'package:veggiemama/providers/baby_provider.dart';
 import 'package:veggiemama/providers/locale_provider.dart';
 import 'package:veggiemama/providers/recipes_provider.dart';
 import 'package:veggiemama/providers/theme_provider.dart';
@@ -20,10 +22,16 @@ Widget _buildProfile() {
           create: (_) => AchievementsProvider()..loadAchievements()),
       ChangeNotifierProvider(create: (_) => RecipesProvider()..loadRecipes()),
       ChangeNotifierProvider(create: (_) => AIChatProvider()..loadAssistants()),
+      ChangeNotifierProvider(create: (_) => BabyProvider()..load()),
       ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ChangeNotifierProvider(create: (_) => LocaleProvider()),
     ],
-    child: const MaterialApp(home: ProfileScreen()),
+    child: const MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale('sl'),
+      home: ProfileScreen(),
+    ),
   );
 }
 

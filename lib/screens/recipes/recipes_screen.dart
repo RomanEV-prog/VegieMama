@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_spacing.dart';
+import '../../core/helpers/l10n_ext.dart';
 import '../../core/widgets/empty_state.dart';
 import '../../core/widgets/error_state.dart';
 import '../../core/widgets/loading_state.dart';
@@ -42,7 +43,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
     final provider = context.watch<RecipesProvider>();
 
     return Scaffold(
-      appBar: const VeggieMamaAppBar(title: 'Recepti'),
+      appBar: VeggieMamaAppBar(title: context.l10n.navRecipes),
       body: Builder(
         builder: (context) {
           if (provider.isLoading && provider.recipes.isEmpty) {

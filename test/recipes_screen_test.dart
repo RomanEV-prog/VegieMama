@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:veggiemama/l10n/app_localizations.dart';
 import 'package:veggiemama/providers/recipes_provider.dart';
 import 'package:veggiemama/providers/user_provider.dart';
 import 'package:veggiemama/screens/recipes/recipe_detail_screen.dart';
@@ -25,7 +26,12 @@ Widget _buildApp({String initialLocation = '/recipes'}) {
       ChangeNotifierProvider(create: (_) => UserProvider()..loadUser()),
       ChangeNotifierProvider(create: (_) => RecipesProvider()..loadRecipes()),
     ],
-    child: MaterialApp.router(routerConfig: router),
+    child: MaterialApp.router(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale('sl'),
+      routerConfig: router,
+    ),
   );
 }
 

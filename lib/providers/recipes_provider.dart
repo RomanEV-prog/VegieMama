@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../models/recipe_model.dart';
+import '../services/local/achievements_service.dart';
 import '../services/repositories/recipe_repository.dart';
 
 class RecipesProvider extends ChangeNotifier {
@@ -90,6 +91,7 @@ class RecipesProvider extends ChangeNotifier {
         .catchError((Object e) {
       _error = e.toString();
     });
+    AchievementsService.instance.setCount('favorites', _favorites.length);
   }
 
   RecipeModel? recipeById(String id) =>

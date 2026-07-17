@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'l10n/app_localizations.dart';
 import 'providers/baby_provider.dart';
 import 'providers/user_provider.dart';
 import 'providers/tracking_provider.dart';
@@ -64,11 +64,7 @@ class _VeggieMamaAppState extends State<VeggieMamaApp> {
             themeMode: themeProvider.themeMode,
             locale: localeProvider.locale,
             supportedLocales: LocaleProvider.supportedLocales,
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
           );
         },
       ),

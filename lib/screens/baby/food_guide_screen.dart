@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_spacing.dart';
+import '../../core/helpers/l10n_ext.dart';
 import '../../core/widgets/loading_state.dart';
 import '../../core/widgets/veggie_mama_app_bar.dart';
 import '../../models/food_introduction_model.dart';
@@ -46,7 +47,7 @@ class _FoodGuideScreenState extends State<FoodGuideScreen> {
 
     return Scaffold(
       appBar:
-          const VeggieMamaAppBar(title: 'Uvajanje hrane', showBack: true),
+          VeggieMamaAppBar(title: context.l10n.titleFoodGuide, showBack: true),
       body: Builder(
         builder: (context) {
           if (provider.isLoading && provider.foodGuide.isEmpty) {

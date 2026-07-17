@@ -11,7 +11,7 @@ Vsaka faza je samostojen, zaključen kos dela (vertical slice). Faza je končana
 | 5 | [AI vertical slice](faza-5-ai.md) | ⏸️ preskočena |
 | 6 | [Onboarding + persistence](faza-6-onboarding-persistence.md) | ✅ končana |
 | 7 | [Otrok 0–3](faza-7-otrok-0-3.md) | ✅ končana |
-| 8 | [Polish in priprava na izdajo](faza-8-polish.md) | ⬜ |
+| 8 | [Polish in priprava na izdajo](faza-8-polish.md) | ✅ končana |
 
 Arhitekturna pravila in produktna usmeritev: [ARCHITECTURE.md](../../ARCHITECTURE.md). Oblikovne/UX smernice: [design-guidelines.md](../design-guidelines.md). Delovni proces: [workflow.md](../workflow.md).
 

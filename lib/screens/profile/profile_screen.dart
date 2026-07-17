@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_spacing.dart';
 import '../../core/helpers/emotional_feedback.dart';
+import '../../core/helpers/l10n_ext.dart';
 import '../../core/widgets/error_state.dart';
 import '../../core/widgets/loading_state.dart';
 import '../../core/widgets/veggie_mama_app_bar.dart';
@@ -27,8 +28,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  // Picked once so the banner doesn't change on every rebuild.
-  final String _motivationalMessage = EmotionalFeedback.motivationalMessage();
+  // Picked once (per stage) so the banner doesn't change on rebuilds.
+  String? _motivationalMessage;
 
   Future<void> _refresh() async {
     await Future.wait([
@@ -42,9 +43,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final userProvider = context.watch<UserProvider>();
+    _motivationalMessage ??= EmotionalFeedback.motivationalMessage(
+        userProvider.user?.userType.name);
 
     return Scaffold(
-      appBar: const VeggieMamaAppBar(title: 'Profil'),
+      appBar: VeggieMamaAppBar(title: context.l10n.navProfile),
       body: Builder(
         builder: (context) {
           if (userProvider.isLoading && userProvider.user == null) {
@@ -68,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   padding: const EdgeInsets.symmetric(
                     horizontal: AppSpacing.screenPadding,
                   ),
-                  child: MotivationalBanner(message: _motivationalMessage),
+                  child: MotivationalBanner(message: _motivationalMessage!),
                 ),
                 const SizedBox(height: AppSpacing.sm),
                 const TrackingSummary(),

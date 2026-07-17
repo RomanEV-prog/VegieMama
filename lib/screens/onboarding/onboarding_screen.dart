@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_spacing.dart';
+import '../../core/helpers/l10n_ext.dart';
 import '../../models/user_model.dart';
 import '../../providers/locale_provider.dart';
 import '../../providers/theme_provider.dart';
@@ -107,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   if (_step > 0 && _step < _stepCount - 1)
                     TextButton(
                       onPressed: _next,
-                      child: const Text('Preskoči'),
+                      child: Text(context.l10n.commonSkip),
                     ),
                 ],
               ),
@@ -139,8 +140,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               padding: const EdgeInsets.all(AppSpacing.screenPadding),
               child: PrimaryActionButton(
                 label: _step == 0
-                    ? 'Začniva 🌿'
-                    : (_step == _stepCount - 1 ? 'Konči' : 'Naprej'),
+                    ? context.l10n.commonStart
+                    : (_step == _stepCount - 1
+                        ? context.l10n.commonFinish
+                        : context.l10n.commonNext),
                 isLoading: _saving,
                 onPressed: _next,
               ),
@@ -165,7 +168,8 @@ class OnboardingSettingsControls extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Jezik', style: Theme.of(context).textTheme.titleMedium),
+        Text(context.l10n.language,
+            style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: AppSpacing.sm),
         Wrap(
           spacing: AppSpacing.sm,
@@ -184,15 +188,16 @@ class OnboardingSettingsControls extends StatelessWidget {
           ],
         ),
         const SizedBox(height: AppSpacing.xl),
-        Text('Tema', style: Theme.of(context).textTheme.titleMedium),
+        Text(context.l10n.theme,
+            style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: AppSpacing.sm),
         Wrap(
           spacing: AppSpacing.sm,
           children: [
             for (final (label, mode) in [
-              ('Svetla', ThemeMode.light),
-              ('Temna', ThemeMode.dark),
-              ('Sistemska', ThemeMode.system),
+              (context.l10n.themeLight, ThemeMode.light),
+              (context.l10n.themeDark, ThemeMode.dark),
+              (context.l10n.themeSystem, ThemeMode.system),
             ])
               ChoiceChip(
                 label: Text(label),

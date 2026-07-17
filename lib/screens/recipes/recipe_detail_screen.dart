@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_radius.dart';
 import '../../core/constants/app_spacing.dart';
+import '../../core/helpers/l10n_ext.dart';
 import '../../core/widgets/empty_state.dart';
 import '../../core/widgets/loading_state.dart';
 import '../../core/widgets/veggie_mama_app_bar.dart';
@@ -54,7 +55,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     final recipe = provider.recipeById(widget.recipeId);
 
     return Scaffold(
-      appBar: const VeggieMamaAppBar(title: 'Recept', showBack: true),
+      appBar: VeggieMamaAppBar(title: context.l10n.titleRecipe, showBack: true),
       body: Builder(
         builder: (context) {
           if (recipe == null) {

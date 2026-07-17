@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import '../helpers/l10n_ext.dart';
 
 /// Empty state widget with gentle messaging
 class EmptyState extends StatelessWidget {
-  final String message;
+  final String? message;
   final IconData icon;
 
   const EmptyState({
     super.key,
-    this.message = 'Tukaj še ni ničesar – in to je povsem ok 💚',
+    this.message,
     this.icon = Icons.spa_outlined,
   });
 
@@ -20,7 +21,7 @@ class EmptyState extends StatelessWidget {
           Icon(icon, size: 48, color: Theme.of(context).colorScheme.secondary),
           const SizedBox(height: 16),
           Text(
-            message,
+            message ?? context.l10n.commonEmpty,
             style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),

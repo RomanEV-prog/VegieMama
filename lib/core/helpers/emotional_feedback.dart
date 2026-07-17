@@ -52,15 +52,39 @@ class EmotionalFeedback {
     return 'Slišim te. Ni treba biti vedno ok. Tukaj sem zate 💜';
   }
 
-  /// General motivational banner messages
-  static String motivationalMessage() {
-    final messages = [
+  /// Motivational banner messages, gently tailored to the user's stage.
+  /// [stage] matches UserType.name; null falls back to the shared pool.
+  static String motivationalMessage([String? stage]) {
+    const shared = [
       'Vsak korak šteje, tudi najmanjši 🌿',
-      'Skrbiš zase in za svojega malčka – to je super 💚',
       'Danes je dober dan za nežnost do sebe 🌸',
       'Ni popolnega dneva. Je pa tvoj dan. In to je dovolj 💚',
       'Rastlinska pot je pot ljubezni – do sebe in do sveta 🌱',
     ];
-    return messages[_random.nextInt(messages.length)];
+    const byStage = {
+      'pregnant': [
+        'Tvoje telo ve, kaj dela. Ti mu samo prisluhni 🤰',
+        'Vsak teden zraseta oba – otrok in tvoja moč 💚',
+        'Počitek ni razvada, je del nosečnosti 🌙',
+      ],
+      'postpartum': [
+        'Okrevanje ni tekma. Tvoj tempo je pravi tempo 🌸',
+        'Rodila si človeka. Danes je lahko kosilo čisto preprosto 💚',
+        'Prositi za pomoč je znak moči, ne šibkosti 💜',
+      ],
+      'babyMom': [
+        'Neprespane noči minejo. Tvoja nežnost ostane 🍼',
+        'Dovolj dobra mama je natanko prava mama 💚',
+        'Vsaka žlička je raziskovanje, ne izpit 🥄',
+      ],
+      'toddlerMom': [
+        'Izbirčnost je faza, ne tvoja ocena 🧸',
+        'Pester teden šteje več kot popoln dan 💚',
+        'Malček raste – in ti rasteš z njim 🌱',
+      ],
+    };
+
+    final pool = [...shared, ...?byStage[stage]];
+    return pool[_random.nextInt(pool.length)];
   }
 }

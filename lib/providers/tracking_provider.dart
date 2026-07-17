@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../models/tracking_data_model.dart';
+import '../services/local/achievements_service.dart';
 import '../services/repositories/tracking_repository.dart';
 
 class TrackingProvider extends ChangeNotifier {
@@ -53,12 +54,18 @@ class TrackingProvider extends ChangeNotifier {
     _repository.saveTrackingData(_todayData!).catchError((Object e) {
       _error = e.toString();
     });
+    AchievementsService.instance.markActiveToday();
   }
 
-  void addWaterIntake(int ml) =>
-      _mutate((t) => t.copyWith(waterIntake: t.waterIntake + ml));
+  void addWaterIntake(int ml) {
+    _mutate((t) => t.copyWith(waterIntake: t.waterIntake + ml));
+    AchievementsService.instance.increment('water_logs');
+  }
 
-  void setMood(int rating) => _mutate((t) => t.copyWith(moodRating: rating));
+  void setMood(int rating) {
+    _mutate((t) => t.copyWith(moodRating: rating));
+    AchievementsService.instance.increment('mood_logs');
+  }
 
   void setSleep(double hours) => _mutate((t) => t.copyWith(sleepHours: hours));
 

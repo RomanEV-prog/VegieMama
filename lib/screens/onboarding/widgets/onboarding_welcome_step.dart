@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_spacing.dart';
+import '../../../core/helpers/l10n_ext.dart';
 
 class OnboardingWelcomeStep extends StatelessWidget {
   const OnboardingWelcomeStep({super.key});
@@ -14,15 +15,13 @@ class OnboardingWelcomeStep extends StatelessWidget {
           const Text('🌿', style: TextStyle(fontSize: 64)),
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'Dobrodošla v VeggieMama',
+            context.l10n.onbWelcomeTitle,
             style: Theme.of(context).textTheme.headlineLarge,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: AppSpacing.lg),
           Text(
-            'Tvoja nežna spremljevalka na rastlinski poti — '
-            'od nosečnosti do malčkovih prvih let.\n\n'
-            'Brez pritiska, brez ocenjevanja. Samo podpora.',
+            context.l10n.onbWelcomeBody,
             style: Theme.of(context).textTheme.bodyLarge,
             textAlign: TextAlign.center,
           ),

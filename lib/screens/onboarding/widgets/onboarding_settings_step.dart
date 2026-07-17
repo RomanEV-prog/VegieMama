@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_spacing.dart';
+import '../../../core/helpers/l10n_ext.dart';
 import '../onboarding_screen.dart';
 
 class OnboardingSettingsStep extends StatelessWidget {
@@ -11,12 +12,12 @@ class OnboardingSettingsStep extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.xl),
       children: [
         Text(
-          'Še zadnji dotik',
+          context.l10n.onbSettingsTitle,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: AppSpacing.sm),
         Text(
-          'Izberi jezik in videz. Oboje lahko kadar koli spremeniš v nastavitvah.',
+          context.l10n.onbSettingsSubtitle,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         const SizedBox(height: AppSpacing.xl),

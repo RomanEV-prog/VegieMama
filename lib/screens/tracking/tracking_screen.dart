@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_spacing.dart';
+import '../../core/helpers/l10n_ext.dart';
 import '../../core/widgets/error_state.dart';
 import '../../core/widgets/loading_state.dart';
 import '../../core/widgets/veggie_mama_app_bar.dart';
@@ -51,7 +52,7 @@ class _TrackingScreenState extends State<TrackingScreen> {
     final today = tracking.todayData;
 
     return Scaffold(
-      appBar: const VeggieMamaAppBar(title: 'Sledenje'),
+      appBar: VeggieMamaAppBar(title: context.l10n.navTracking),
       body: Builder(
         builder: (context) {
           if (tracking.isLoading && today == null) {

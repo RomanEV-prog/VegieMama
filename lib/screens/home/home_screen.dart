@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_spacing.dart';
 import '../../core/helpers/emotional_feedback.dart';
+import '../../core/helpers/l10n_ext.dart';
 import '../../core/widgets/veggie_mama_app_bar.dart';
 import '../../providers/user_provider.dart';
 import '../../widgets/motivational_banner.dart';
@@ -17,8 +18,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // Picked once so the banner doesn't change on every rebuild.
-  final String _motivationalMessage = EmotionalFeedback.motivationalMessage();
+  // Picked once (per stage) so the banner doesn't change on rebuilds.
+  String? _motivationalMessage;
 
   String _greeting(String name) {
     final hour = DateTime.now().hour;
@@ -30,9 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
+    _motivationalMessage ??=
+        EmotionalFeedback.motivationalMessage(user?.userType.name);
 
     return Scaffold(
-      appBar: const VeggieMamaAppBar(title: 'Domov'),
+      appBar: VeggieMamaAppBar(title: context.l10n.navHome),
       body: ListView(
         padding: const EdgeInsets.all(AppSpacing.screenPadding),
         children: [
@@ -43,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: AppSpacing.sm),
           ],
-          MotivationalBanner(message: _motivationalMessage),
+          MotivationalBanner(message: _motivationalMessage!),
           const SizedBox(height: AppSpacing.md),
           const HomeStageHighlight(),
           const SizedBox(height: AppSpacing.md),
