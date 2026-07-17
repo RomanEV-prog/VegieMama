@@ -1,0 +1,7 @@
+# Kopiraj v android/key.properties (gitignoriran) in izpolni.
+# Keystore ustvaris enkrat in ga VARNO shranis (backup!):
+#   keytool -genkey -v -keystore %USERPROFILE%\veggiemama-release.keystore -alias veggiemama -keyalg RSA -keysize 2048 -validity 10000
+storePassword=GESLO_KEYSTORA
+keyPassword=GESLO_KLJUCA
+keyAlias=veggiemama
+storeFile=C:\Users\adler\veggiemama-release.keystore

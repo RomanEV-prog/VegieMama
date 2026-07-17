@@ -1,4 +1,4 @@
-package com.example.veggiemama
+package com.romanev.veggiemama
 
 import io.flutter.embedding.android.FlutterActivity
 

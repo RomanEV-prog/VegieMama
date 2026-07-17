@@ -1,6 +1,6 @@
 # VeggieMama – arhitektura projekta (v2)
 
-> Posodobljeno: 16. 7. 2026. Ta dokument nadomešča prejšnjo datoteko `md` in je referenčna osnova za nadaljnji razvoj. Podrobni načrti po fazah so v `docs/phases/`. Oblikovna in UX pravila: [docs/design-guidelines.md](docs/design-guidelines.md). Delovni proces (commiti, review, triage napak): [docs/workflow.md](docs/workflow.md).
+> Posodobljeno: 17. 7. 2026. Ta dokument nadomešča prejšnjo datoteko `md` in je referenčna osnova za nadaljnji razvoj. Podrobni načrti po fazah so v `docs/phases/`. Oblikovna in UX pravila: [docs/design-guidelines.md](docs/design-guidelines.md). Delovni proces (commiti, review, triage napak): [docs/workflow.md](docs/workflow.md).
 
 ## Namen dokumenta
 
@@ -99,15 +99,18 @@ Kaj je narejeno:
 * ✅ repository sloj, providerji kličejo repozitorije, mocki so skriti za njimi,
 * ✅ theme layer, osnovni core widgeti (app bar, loading/empty/error state).
 
-Kaj še ni narejeno:
+Dopolnjeno do konca MVP (17. 7. 2026):
 
 * ✅ AI klepet na pravem modelu (Gemini, gemini-flash-latest) z deterministično varnostno mrežo; mock fallback brez ključa,
 * ✅ persistence deluje (Hive za user/tracking/favorites, SharedPreferences za temo/jezik),
 * ✅ l10n: UI ogrodje v sl/en/de; vsebinski sloj (recepti, živila, empatija) namenoma sl do v1.1,
 * ✅ `services/remote/` vmesnik pripravljen (AIService, ApiClient, RemoteAIService) — priklop backenda je ena vrstica,
-* ⚠️ testi pokrivajo Profil, Sledenje, Recepte, onboarding/persistenco in otroka 0–3,
+* ✅ 26 testov: Profil, Sledenje, Recepti, onboarding/persistenca, otrok 0–3, AI klepet in helperji,
 * ✅ app ikona in splash (generirana, brand barve); assets mape se polnijo po potrebi,
-* ✅ onboarding je vezan na začetni flow (router redirect).
+* ✅ onboarding je vezan na začetni flow (router redirect),
+* ✅ applicationId com.romanev.veggiemama + signing prek key.properties (keystore je ročni korak — glej v1.1 načrt).
+
+Odprto za naslednjo iteracijo: [docs/phases/v1.1-nacrt.md](docs/phases/v1.1-nacrt.md).
 
 ---
 
@@ -345,7 +348,7 @@ foodId, name, category, recommendedFromMonth, introduced, introducedAt, reaction
 
 ## 9. Razvojne faze
 
-Podroben načrt vsake faze je v `docs/phases/faza-N-*.md`. Povzetek:
+Podroben načrt vsake faze je v `docs/phases/faza-N-*.md`; načrt naslednje iteracije v `docs/phases/v1.1-nacrt.md`. Povzetek:
 
 | Faza | Vsebina | Status |
 |---|---|---|
